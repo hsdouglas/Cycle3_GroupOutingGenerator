@@ -10,6 +10,7 @@ class EventsController < ApplicationController
   # GET /events/1
   # GET /events/1.json
   def show
+    @purchased = @event.purchased_tickets
   end
 
   # GET /events/new
@@ -61,6 +62,36 @@ class EventsController < ApplicationController
     end
   end
 
+  # A simple form that is submitted through AJAX.
+  def buyticket
+    @ticket = Ticket.new(ticket_params)
+    @event = Event.find(@ticket.event_id)
+    if @ticket.valid?
+      @ticket.save
+      # this will have to change to credit card functionality later
+      redirect_to events_url, notice: 'You successfully expressed interest in this event.'
+    else
+      format.json { render json: @event.errors, status: :unprocessable_entity }
+    end
+  end
+
+  def grouptickets
+    @event.group_tickets
+    #redirect_to tickets_url, notice: 'You successfully grouped the available tickets.'
+
+    @tickets = Ticket.for_event(@event).ungrouped[0..5]
+    if tickets.count % 6 == 0
+      newest = Group.new(title: "#{self.title} Group")
+      newest.save!
+      
+      tickets.each do |ticket|
+        ticket.group = newest
+        ticket.save!
+      end
+    end
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
@@ -70,5 +101,9 @@ class EventsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def event_params
       params.require(:event).permit(:title, :description, :poster, :start, :venue_title, :address_1, :address_2, :city, :state, :zip)
+    end
+
+    def ticket_params
+      params.require(:ticket).permit(:event_id, :user_id, :date_purchased)
     end
 end

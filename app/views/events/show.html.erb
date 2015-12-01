@@ -50,5 +50,17 @@
   <%= @event.zip %>
 </p>
 
+<p><strong> There are currently <%= @purchased %> people attending! </strong>Express Interest in this event! </p>
+<%= simple_form_for(Ticket.new, :url => buyticket_path) do |f| %>
+  <%#= f.hidden_field :user_id,  value: current_user.id %>
+  <%= f.hidden_field :event_id, value: @event.id %>
+  <%= f.hidden_field :date_purchased, value: Date.today %>
+  </div>
+  <%= f.button :submit, "Buy My Ticket", {class: "round tagalong-button fix-button"} %>
+<% end %>
+<br>
+<%= link_to 'Group Tickets', controller: :events, action: :grouptickets %>
+<br>
+<br>
 <%= link_to 'Edit', edit_event_path(@event) %> |
 <%= link_to 'Back', events_path %>
