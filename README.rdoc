@@ -5,32 +5,20 @@ Hannah Douglas, Melinda Lin, Taylor Poulos, & Chris Compendio
 
 The purpose of this app is to connect people with new acquaintances, based off of people's common interests. We have built this app in rails but hope it will be a native mobile application in the future.
 
-== Notes:
-Get working by today:
-* list of events (scope, controller)
-* grouping
+== Set Up:
+* git clone
+* bundle install
+* rake db:migrate
+* rails server
+* go to localhost:3000 (or whatever the console tells you)
 
-Without user accounts:
-- user can express interest ("buy ticket")
-- user can see that they have a group after hitting ("buy ticket") 6 times
-- user can see all the people attending an event
+== To run grouping mechanism:
+* rails console
+* create an event
+* create at least six tickets for that event
+* run <tt>Event.first.group_tickets</tt>
 
-HOW DO I DO THIS:
-- if I can determine six at a time --> take those six, make a new Group --> give them all that group, save them
-- each creation of a ticket, call back is tickets_for_event % 6 <-- if that's zero, take the most recent six, divide by 
-
-Okay, if there's one ticket that needs to get into one group:
-"Group" = create a new group, assign that ticket (passed in as a parameter) to the group
-If there are two tickets that need to get into two groups:
-"Group" = for each ticket, create a new group and assign ticket to that group <-- one-to-one ratio of tickets/groups
-If there are two tickets, that need to get to two groups:
-"Group" = pass in array of tickets that need to be grouped, create a new group, assign each ticket to that group
-
-Okay, so I can assign a group to a list of parameters...
-How do I make that list of parameters?
-- when there are six people, in rails console I can run "Event.first.group_tickets(Ticket.first, Ticket.second...)"
-- when there are six people, run the callback...
-
-The callback:
-- after each "new ticket"
-- 
+== Goals by Wednesday:
+* Formatted events/1 page (show page)
+* Formatted My Current Group page (entirely new)
+* Formatted Accoutn page (users/1 show page)
