@@ -1,6 +1,8 @@
 class Event < ActiveRecord::Base
 	has_many :tickets
 
+	mount_uploader :poster, PhotoUploader
+
 	def purchased_tickets
 		self.tickets.count
 	end

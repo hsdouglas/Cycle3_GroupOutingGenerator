@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
+<% unless @group.tickets.first.event.poster_url.nil? %>
+  <p><%= image_tag @group.tickets.first.event.poster_url, style: "max-width: 200px"  %></p>
+<% end %>
+
 <p>
   <strong>Title:</strong>
   <%= @group.title %>
