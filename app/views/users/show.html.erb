@@ -15,11 +15,11 @@
 <% unless @user.photo_url.nil? %>
   <%= image_tag @user.photo_url, style: "max-width: 200px"  %>
   <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+<%end%>
 <% unless @user.photo_url.nil? %>
   <div class='user-image'>
     <%= image_tag @user.photo_url, style: "max-width: 200px"  %></p>
   </div>
-
 <% end %>
 </div>
 
