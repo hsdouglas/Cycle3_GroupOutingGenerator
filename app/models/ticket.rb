@@ -1,6 +1,7 @@
 class Ticket < ActiveRecord::Base
 	belongs_to :group
 	belongs_to :event
+	belongs_to :user
 
 	# "X people are interested in this event!"
 	scope :for_event, -> (event) {where(event: event)}

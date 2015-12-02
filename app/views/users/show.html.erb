@@ -30,5 +30,21 @@
   <%= @user.email %>
 </p>
 
+<p><strong>My Groups:</strong></p>
+<ul>
+  <% @groups.each do |group| %>
+      <li><%= link_to group.title, group_path(group.tickets.first.group_id) %></li>
+  <% end %>
+</ul>
+
+<p><strong>Purchase History:</strong></p>
+<ul>
+  <% @tickets.each do |ticket| %>
+      <li><%= link_to ticket.event.title, event_path(ticket.event_id) %></li>
+  <% end %>
+</ul>
+
+
+
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

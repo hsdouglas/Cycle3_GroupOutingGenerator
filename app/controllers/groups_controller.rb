@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
   # GET /groups/1
   # GET /groups/1.json
   def show
+    @other_members = @group.get_members
   end
 
   # GET /groups/new

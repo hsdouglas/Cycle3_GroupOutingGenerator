@@ -5,6 +5,18 @@
   <%= @group.title %>
 </p>
 
+<p>
+  <strong>Date of Your Outing:</strong>
+  <%= @group.tickets.first.event.start %>
+</p>
+
+<p><strong>People Joining:</strong></p>
+<ul>
+  <% @group.tickets.each do |ticket| %>
+  	<li><%= ticket.user.first_name %> <%= ticket.user.last_name %> | <%= ticket.user.bio %></li>
+  <% end %>
+</ul>
+
 
 <%= link_to 'Edit', edit_group_path(@group) %> |
 <%= link_to 'Back', groups_path %>
