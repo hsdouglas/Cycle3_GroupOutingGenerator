@@ -1,9 +1,25 @@
 <p id="notice"><%= notice %></p>
 
+
+<div class="navigation-links">
+  <div class="right-link">
+    <%= link_to 'Edit', edit_user_path(@user) %>
+  </div>
+  <div class="left-link">
+    <%= link_to 'Back', users_path %>
+  </div>
+</div>
+
+
 <div class="header">
 <% unless @user.photo_url.nil? %>
   <%= image_tag @user.photo_url, style: "max-width: 200px"  %>
   <h2><%= @user.first_name %> <%= @user.last_name %></h2>
+<% unless @user.photo_url.nil? %>
+  <div class='user-image'>
+    <%= image_tag @user.photo_url, style: "max-width: 200px"  %></p>
+  </div>
+
 <% end %>
 </div>
 
@@ -40,12 +56,36 @@
   <%= @user.phone %>
 </p>
 
-<p>
-  <strong>Email:</strong>
-  <%= @user.email %>
-</p>
+<div class="user-name">
+  <%= @user.anonymized_name %>
+</div>
+
+<div class="user-bio">
+  <%= @user.bio %>
+</div>
+
+<div class="table-title">Contact</div>
+<ul class="table data-right">
+  <li><label>Phone</label> <%= @user.phone %></li>
+  <li><label>Email</label> <%= @user.email %></li>
+</ul>
 
 <hr>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>
+
+<div class="table-title">Groups</div>
+<ul class="table">
+  <% @groups.each do |group| %>
+      <li><%= link_to group.title, group_path(group.tickets.first.group_id) %></li>
+  <% end %>
+</ul>
+
+<div class="table-title">Purchase History</div>
+<ul class="table">
+  <% @tickets.each do |ticket| %>
+      <li><%= link_to ticket.event.title, event_path(ticket.event_id) %></li>
+  <% end %>
+</ul>
+
