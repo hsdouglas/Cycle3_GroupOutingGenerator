@@ -7,7 +7,7 @@ class Event < ActiveRecord::Base
 		self.tickets.count
 	end
 
-	def self.group_tickets
+	def group_tickets
 		tickets = Ticket.for_event(self).ungrouped[0..5]
 
 		if tickets.count % 6 == 0

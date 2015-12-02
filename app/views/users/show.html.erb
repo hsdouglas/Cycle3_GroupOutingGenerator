@@ -1,28 +1,39 @@
 <p id="notice"><%= notice %></p>
 
+<div class="header">
 <% unless @user.photo_url.nil? %>
-  <p><%= image_tag @user.photo_url, style: "max-width: 200px"  %></p>
+  <%= image_tag @user.photo_url, style: "max-width: 200px"  %>
+  <h2><%= @user.first_name %> <%= @user.last_name %></h2>
 <% end %>
+</div>
+
+<hr>
+<h2>About me:</h2>
+<p><%= @user.bio %></p>
 
 <p>
-  <strong>First name:</strong>
-  <%= @user.first_name %>
+  <strong>Birthday:</strong>
+  <%= @user.birth_date.strftime("%m/%d/%Y") %>
 </p>
 
-<p>
-  <strong>Last name:</strong>
-  <%= @user.last_name %>
-</p>
+<hr>
+<h2>My Groups:</h2>
+<ul class="user_lists">
+  <% @groups.each do |group| %>
+      <li><%= link_to group.title, group_path(group.tickets.first.group_id) %></li>
+  <% end %>
+</ul>
 
-<p>
-  <strong>Birth date:</strong>
-  <%= @user.birth_date %>
-</p>
+<hr>
+<h2>Interest History:</h2>
+<ul class="user_lists">
+  <% @tickets.each do |ticket| %>
+      <li><%= link_to ticket.event.title, event_path(ticket.event_id) %></li>
+  <% end %>
+</ul>
 
-<p>
-  <strong>Bio:</strong>
-  <%= @user.bio %>
-</p>
+<hr>
+<h2>Contact info:</h2>
 
 <p>
   <strong>Phone:</strong>
@@ -34,21 +45,7 @@
   <%= @user.email %>
 </p>
 
-<p><strong>My Groups:</strong></p>
-<ul>
-  <% @groups.each do |group| %>
-      <li><%= link_to group.title, group_path(group.tickets.first.group_id) %></li>
-  <% end %>
-</ul>
-
-<p><strong>Purchase History:</strong></p>
-<ul>
-  <% @tickets.each do |ticket| %>
-      <li><%= link_to ticket.event.title, event_path(ticket.event_id) %></li>
-  <% end %>
-</ul>
-
-
+<hr>
 
 <%= link_to 'Edit', edit_user_path(@user) %> |
 <%= link_to 'Back', users_path %>

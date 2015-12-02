@@ -22,9 +22,9 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= event.title %></td>
+        <td><%= link_to event.title, event %></td>
         <td><%= event.description %></td>
-        <td><%= event.poster %></td>
+        <td><%= image_tag event.poster_url, style: "max-width: 365px;" %></td>
         <td><%= event.start %></td>
         <td><%= event.venue_title %></td>
         <td><%= event.address_1 %></td>

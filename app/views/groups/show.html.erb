@@ -5,15 +5,21 @@
 	  <p><%= image_tag @group.tickets.first.event.poster_url, style: "max-width: 365px"  %></p>
 	<% end %>
 	<h2><%= @group.title %></h2>
+  <p><%= @group.tickets.first.event.description %></p>
 	<h4><%= @group.tickets.first.event.start.strftime("on %m/%d/%Y at %I:%M%p")%></h4>
 </div>
 
-<p><strong>People Joining:</strong></p>
+
+
+<hr>
+<h2>Who's Going?</h2>
 <ul class="group_members">
   <% @group.tickets.each do |ticket| %>
   	<li>
   		<% unless ticket.user.photo_url.nil? %><%= image_tag ticket.user.photo_url %><% end %><br>
-  		<%= ticket.user.first_name %> <%= ticket.user.last_name %><br><%= ticket.user.bio %>
+  		<strong><%= ticket.user.first_name %> <%= ticket.user.last_name %></strong><br><%= ticket.user.bio %>
   	</li>
   <% end %>
 </ul>
+
+

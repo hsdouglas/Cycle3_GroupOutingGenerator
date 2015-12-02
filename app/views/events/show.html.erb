@@ -11,7 +11,7 @@
 </p>
 
 <% unless @event.poster_url.nil? %>
-  <p><%= image_tag @event.poster_url, style: "max-width: 200px" %></p>
+  <%= image_tag @event.poster_url, style: "max-width: 200px" %>
 <% end %>
 
 <p>

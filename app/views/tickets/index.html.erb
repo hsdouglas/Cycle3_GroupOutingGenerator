@@ -16,8 +16,8 @@
   <tbody>
     <% @tickets.each do |ticket| %>
       <tr>
-        <td><%= ticket.event_id %></td>
-        <td><%= ticket.user_id %></td>
+        <td><%= ticket.event.title %></td>
+        <td><% unless ticket.user.nil?%> <%= ticket.user.first_name %> <%end%></td>
         <td><%= ticket.date_purchased %></td>
         <td><%= ticket.group_id %></td>
         <td><%= link_to 'Show', ticket %></td>
