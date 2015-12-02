@@ -10,9 +10,15 @@
  * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
  * file per style scope.
  *
- *= require_tree .
+ *= require normalize-rails
  *= require_self
+ *= require_tree .
  */
+@import "base/mixins.scss";
+@import "base/normalize.scss";
+@import "base/globals.scss";
+@import "styles/home.scss";
+@import "styles/posts.scss";
 
 .header {
 	text-align: center;
@@ -46,3 +52,4 @@ ul.group_members li img {
 ul.user_lists {
 	list-style-type: none;
 }
+

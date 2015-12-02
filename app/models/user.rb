@@ -10,4 +10,8 @@ class User < ActiveRecord::Base
 			groups << ticket.group
 		end
 	end
+
+	def anonymized_name
+		"#{first_name} #{last_name[0]}."
+	end
 end

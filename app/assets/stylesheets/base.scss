@@ -1,0 +1,99 @@
+html {
+  font-family: "proxima-nova";
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+
+$color-brand: #ff2378;
+$color-brand-dark: #b20045;
+$color-new: #ffed3c;
+$color-active: #07a8cc;
+$color-active-dark: #0f95b2;
+
+$color-text: #5e5776;
+$color-text-secondary: #85a7b4;
+$color-text-white: #fff;
+
+$border-radius: 15px;
+$border-radius-small: 3px;
+
+$gray-light: #cdcdcd;
+
+$gutter: 8px;
+
+
+.navigation-links {
+  height: 30px;
+  position: relative;
+  background-color: $color-brand;
+
+  padding: 10px;
+
+
+  a, a:visited, a:hover, a:active {
+    color: $color-text-white;
+    background: none;
+    cursor: pointer;
+    text-decoration: none;
+  }
+
+  .left-link {
+    position: absolute;
+    top: $gutter;
+    right: 50%;
+    left: $gutter;
+    text-align: left;
+  }
+
+  .right-link {
+    position: absolute;
+    top: $gutter;
+    right: $gutter;
+    left: 50%;
+    text-align: right;
+  }
+}
+
+
+.table-title {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-weight: 600;
+  font-size : 80%;
+  color: $color-text-secondary;
+  margin: $gutter;
+}
+
+ul.table {
+  list-style-type: none;
+
+  padding: 0;
+  margin: $gutter;
+  margin-bottom: 4 * $gutter;
+
+  &.data-right {
+    text-align: right;
+  }
+
+  li {
+    border-bottom: 1px solid $gray-light;
+    padding-top: $gutter;
+    padding-bottom: $gutter;
+
+
+    color: $color-text;
+
+    label {
+      color: $color-text-secondary;
+      float: left;
+    }
+
+  }
+  border-top: 1px solid $gray-light;
+}
+
+@import "styles/events.scss";
+@import "styles/groups.scss";
+@import "styles/tickets.scss";
+@import "styles/users.scss";
