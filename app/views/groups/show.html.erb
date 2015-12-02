@@ -1,26 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<% unless @group.tickets.first.event.poster_url.nil? %>
-  <p><%= image_tag @group.tickets.first.event.poster_url, style: "max-width: 200px"  %></p>
-<% end %>
-
-<p>
-  <strong>Title:</strong>
-  <%= @group.title %>
-</p>
-
-<p>
-  <strong>Date of Your Outing:</strong>
-  <%= @group.tickets.first.event.start %>
-</p>
+<div class="header">
+	<% unless @group.tickets.first.event.poster_url.nil? %>
+	  <p><%= image_tag @group.tickets.first.event.poster_url, style: "max-width: 365px"  %></p>
+	<% end %>
+	<h2><%= @group.title %></h2>
+	<h4><%= @group.tickets.first.event.start.strftime("on %m/%d/%Y at %I:%M%p")%></h4>
+</div>
 
 <p><strong>People Joining:</strong></p>
-<ul>
+<ul class="group_members">
   <% @group.tickets.each do |ticket| %>
-  	<li><%= ticket.user.first_name %> <%= ticket.user.last_name %> | <%= ticket.user.bio %></li>
+  	<li>
+  		<% unless ticket.user.photo_url.nil? %><%= image_tag ticket.user.photo_url %><% end %><br>
+  		<%= ticket.user.first_name %> <%= ticket.user.last_name %><br><%= ticket.user.bio %>
+  	</li>
   <% end %>
 </ul>
-
-
-<%= link_to 'Edit', edit_group_path(@group) %> |
-<%= link_to 'Back', groups_path %>

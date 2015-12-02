@@ -13,3 +13,32 @@
  *= require_tree .
  *= require_self
  */
+
+.header {
+	text-align: center;
+}
+
+ul.group_members {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.group_members li {
+	list-style-type: none;
+	float: left;
+	width: 33%;
+	padding: 30px;
+}
+
+ul.group_members li img {
+	border-radius: 50%;
+	height: 40px;
+	width: 40px;
+	padding: 3px;
+	border: 1px solid black;
+}
+
+.bottom_links {
+	width: 100%;
+}
