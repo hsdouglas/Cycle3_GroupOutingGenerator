@@ -1,65 +1,59 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Title:</strong>
-  <%= @event.title %>
-</p>
+<div class="navigation-links">
+  <div class="right-link">
+    <%= link_to 'Edit', edit_event_path(@event) %>
+  </div>
+  <div class="left-link">
+    <%= link_to 'Back', events_path %>
+  </div>
+</div>
 
-<p>
-  <strong>Description:</strong>
-  <%= @event.description %>
-</p>
 
 <% unless @event.poster_url.nil? %>
-  <p><%= image_tag @event.poster_url, style: "max-width: 200px" %></p>
+  <div class="event-image"><%= image_tag @event.poster_url, style: "max-width: 200px" %></div>
 <% end %>
 
-<p>
-  <strong>Start:</strong>
-  <%= @event.start %>
-</p>
+<div class="event-title"><%= @event.title %></div>
+<div class="event-details"><%= @event.venue_title %></div>
 
-<p>
-  <strong>Venue title:</strong>
-  <%= @event.venue_title %>
-</p>
+<div class="event-attendance">
+  <% if @purchased == 1 %>
+    There is currently <%= @purchased %> person attending!
+  <% else %>
+    There are currently <%= @purchased %> people attending!
+  <% end %>
 
-<p>
-  <strong>Address 1:</strong>
-  <%= @event.address_1 %>
-</p>
+  <%= simple_form_for(Ticket.new, :url => buyticket_path) do |f| %>
+    <%#= f.hidden_field :user_id,  value: current_user.id %>
+    <%= f.hidden_field :event_id, value: @event.id %>
+    <%= f.hidden_field :date_purchased, value: Date.today %>
+    <%= f.button :submit, "Buy My Ticket", {class: "round tagalong-button fix-button"} %>
+  <% end %>
 
-<p>
-  <strong>Address 2:</strong>
-  <%= @event.address_2 %>
-</p>
+</div>
 
-<p>
-  <strong>City:</strong>
-  <%= @event.city %>
-</p>
 
-<p>
-  <strong>State:</strong>
-  <%= @event.state %>
-</p>
 
-<p>
-  <strong>Zip:</strong>
-  <%= @event.zip %>
-</p>
-
-<p><strong> There are currently <%= @purchased %> people attending! </strong>Express Interest in this event! </p>
-<%= simple_form_for(Ticket.new, :url => buyticket_path) do |f| %>
-  <%#= f.hidden_field :user_id,  value: current_user.id %>
-  <%= f.hidden_field :event_id, value: @event.id %>
-  <%= f.hidden_field :date_purchased, value: Date.today %>
+<div class="cell">
+  <div class="cell-title">Description</div>
+  <div class="cell-content">
+    <%= @event.description %>
   </div>
-  <%= f.button :submit, "Buy My Ticket", {class: "round tagalong-button fix-button"} %>
-<% end %>
-<br>
-<%= link_to 'Group Tickets', controller: :events, action: :grouptickets %>
-<br>
-<br>
-<%= link_to 'Edit', edit_event_path(@event) %> |
-<%= link_to 'Back', events_path %>
+</div>
+
+<div class="cell">
+  <div class="cell-title">Event Date &amp; Time</div>
+  <div class="cell-content">
+    <%= @event.start.strftime("%m/%d/%Y at %I:%M%p") %>
+  </div>
+</div>
+
+<div class="cell">
+  <div class="cell-title">Address</div>
+  <div class="cell-content">
+    <%= @event.address_1 %>
+    <%= @event.address_2 %><br>
+    <%= @event.city %>, <%= @event.state %> <%= @event.zip %>
+  </div>
+</div>
