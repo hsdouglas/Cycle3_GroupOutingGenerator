@@ -13,7 +13,6 @@ gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
 # See https://github.com/rails/execjs#readme for more supported runtimes
 # gem 'therubyracer', platforms: :ruby
-gem 'carrierwave'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -35,6 +34,8 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'simple_form'
 gem 'nested_form','0.3.2'
+gem 'faker', '~> 1.6', '>= 1.6.1'
+gem 'carrierwave'
 
 gem 'normalize-rails'
 

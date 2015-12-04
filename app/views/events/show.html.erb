@@ -11,11 +11,7 @@
 
 
 <% unless @event.poster_url.nil? %>
-<<<<<<< HEAD
-  <%= image_tag @event.poster_url, style: "max-width: 200px" %>
-=======
   <div class="event-image"><%= image_tag @event.poster_url, style: "max-width: 200px" %></div>
->>>>>>> c84b74277641b78b605b69f28f9bc3e6d3e4ee69
 <% end %>
 
 <div class="event-title"><%= @event.title %></div>

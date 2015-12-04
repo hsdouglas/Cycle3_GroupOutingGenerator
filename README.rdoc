@@ -22,3 +22,10 @@ The purpose of this app is to connect people with new acquaintances, based off o
 * Formatted events/1 page (show page)
 * Formatted My Current Group page (entirely new)
 * Formatted Accoutn page (users/1 show page)
+
+== Add back in to users (removed for presentation 12/2)
+<div class="table-title">Contact</div>
+<ul class="table data-right">
+  <li><label>Phone</label> <%= @user.phone %></li>
+  <li><label>Email</label> <%= @user.email %></li>
+</ul>
