@@ -14,6 +14,10 @@ class UsersController < ApplicationController
     @groups = @user.groups
   end
 
+  def group_history
+    # reference past and future groups with scopes here
+  end
+
   # GET /users/new
   def new
     @user = User.new

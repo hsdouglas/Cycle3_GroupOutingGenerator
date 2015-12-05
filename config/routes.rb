@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   post 'buy_ticket/:id' => 'events#buyticket', as: :buyticket
   patch 'events/:id' => 'events#grouptickets', as: :grouptickets
 
+  get 'users/:id/group_history' => 'users#group_history', as: :group_history
+
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
