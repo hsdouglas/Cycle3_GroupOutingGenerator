@@ -23,6 +23,15 @@
   <% else %>
     There are currently <%= @purchased %> people attending!
   <% end %>
+</div>
+
+<button onclick="showSomething()">Buy Ticket</button>
+
+<dialog id="something">
+  <h3>Choose Credit Card</h3>
+  <p>Credit Card: xxxx</p>
+  <p>Event Name: <%= @event.title %></p>
+
 
   <%= simple_form_for(Ticket.new, :url => buyticket_path) do |f| %>
     <%#= f.hidden_field :user_id,  value: current_user.id %>
@@ -30,7 +39,7 @@
     <%= f.hidden_field :date_purchased, value: Date.today %>
     <%= f.button :submit, "Buy My Ticket", {class: "round tagalong-button fix-button"} %>
   <% end %>
-</div>
+</dialog>
 
 <div class="cell">
   <div class="cell-title">Description</div>
