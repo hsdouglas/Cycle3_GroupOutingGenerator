@@ -28,10 +28,10 @@
 <button onclick="showSomething()">Buy Ticket</button>
 
 <dialog id="something">
+  <button onclick="hideSomething()">Cancel</button>
   <h3>Choose Credit Card</h3>
-  <p>Credit Card: xxxx</p>
+  <p>Credit Card: <%= User.first.credit_cards.first.name %></p>
   <p>Event Name: <%= @event.title %></p>
-
 
   <%= simple_form_for(Ticket.new, :url => buyticket_path) do |f| %>
     <%#= f.hidden_field :user_id,  value: current_user.id %>

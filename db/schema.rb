@@ -11,7 +11,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151202160600) do
+ActiveRecord::Schema.define(version: 20151205203543) do
+
+  create_table "credit_cards", force: :cascade do |t|
+    t.string   "name"
+    t.string   "card_type"
+    t.string   "number"
+    t.integer  "expiration_month"
+    t.integer  "expiration_year"
+    t.string   "zipcode"
+    t.datetime "created_at",       null: false
+    t.datetime "updated_at",       null: false
+    t.integer  "user_id"
+  end
 
   create_table "events", force: :cascade do |t|
     t.string   "title"

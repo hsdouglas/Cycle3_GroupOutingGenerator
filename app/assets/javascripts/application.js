@@ -18,3 +18,7 @@
 function showSomething() {
   document.getElementById("something").showModal();
 }
+
+function hideSomething() {
+	document.getElementById("something").close();
+}

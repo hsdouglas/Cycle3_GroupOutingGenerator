@@ -1,6 +1,7 @@
 class User < ActiveRecord::Base
 	has_many :tickets
 	has_many :groups, through: :tickets
+	has_many :credit_cards
 
 	mount_uploader :photo, PhotoUploader
 
