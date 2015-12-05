@@ -94,15 +94,23 @@ ul.table {
 }
 
 
+.user-name, .event-title {
+  font-size: 28px;
+  color: $color-text;
+  text-align: center;
+}
 
-/*
-  ======================
-  Events
-  ======================
-*/
+.event-details, .user-bio {
+  font-size: 14;
+  color: $color-text-secondary;
+  text-align: center;
+  width: 280px;
+  margin: auto;
+  font-weight: 500;
+}
 
 
-.event-image {
+.event-image, .user-image {
   text-align: center;
   margin-top: -30px;
   z-index: 1000000;
@@ -112,29 +120,20 @@ ul.table {
   }
 }
 
-.event-title {
-  font-size: 28px;
-  color: #5e5776;
-  text-align: center;
-}
 
-.event-details {
-  font-size: 14;
-  color: #85a7b4;
-  text-align: center;
-  width: 280px;
-  margin: auto;
-  font-weight: 500;
-}
+/*
+  ======================
+  Events
+  ======================
+*/
+
+
 
 .event-attendance {
-  margin: 8px;
-  margin-bottom: 4 * 8px;
+  margin: $gutter;
+  margin-bottom: 4 * $gutter;
   text-align: center;
 }
-
-
-
 
 
 
@@ -145,16 +144,16 @@ ul.table {
     font-weight: 600;
     font-size : 80%;
     color: #85a7b4;
-    margin-bottom: 8px;
-    padding-botom: 8px;
+    margin-bottom: $gutter;
+    padding-bottom: $gutter;
 
     border-bottom: 1px solid #cdcdcd;
   }
   padding: 0;
 
-  margin-top: 8px;
-  margin: 8px;
-  margin-bottom: 4 * 8px;
+  margin-top: $gutter;
+  margin: $gutter;
+  margin-bottom: 4 * $gutter;
 
 }
 
@@ -164,29 +163,10 @@ ul.table {
   ======================
 */
 
+
 .user-image {
-  text-align: center;
-  margin-top: -30px;
-  z-index: 1000000;
-  position: relative;
   img {
     border-radius: 10000px;
     border: 2px solid white;
-    box-shadow: 0px 3px 35px rgba(0,0,0,0.3);
   }
-}
-
-.user-name {
-  font-size: 28px;
-  color: #5e5776;
-  text-align: center;
-}
-
-.user-bio {
-  font-size: 14;
-  color: #85a7b4;
-  text-align: center;
-  width: 280px;
-  margin: auto;
-  font-weight: 500;
 }
