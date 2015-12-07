@@ -25,12 +25,18 @@
   <% end %>
 </div>
 
-<button onclick="showSomething()">Buy Ticket</button>
+<button onclick="showSomething()">Reserve My Spot</button>
 
 <dialog id="something">
   <button onclick="hideSomething()">Cancel</button>
-  <h3>Choose Credit Card</h3>
-  <p>Credit Card: <%= User.first.credit_cards.first.name %></p>
+  <h3>Choose Payment Mechanism</h3>
+  <select name="user[credit_card_id]">
+    <option value="" selected="selected">Please select</option>
+    <option value="1"><%= User.first.credit_cards.first.name %></option>
+    <option value="2"><%= User.first.credit_cards.first.name %></option>
+    <option value="3"><%= User.first.credit_cards.first.name %></option>
+  </select>
+
   <p>Event Name: <%= @event.title %></p>
 
   <%= simple_form_for(Ticket.new, :url => buyticket_path) do |f| %>

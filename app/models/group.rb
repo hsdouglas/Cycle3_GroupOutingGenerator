@@ -5,4 +5,8 @@ class Group < ActiveRecord::Base
 	def get_members
 		Group.joins(tickets: :user)
 	end
+
+	def get_event
+		Group.joins(tickets: :event)
+	end
 end

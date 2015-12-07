@@ -70,6 +70,7 @@ class EventsController < ApplicationController
       @ticket.save
       # this will have to change to credit card functionality later
       redirect_to events_url, notice: 'You successfully expressed interest in this event.'
+      # redirect to my groups url (when logged in!)
     else
       format.json { render json: @event.errors, status: :unprocessable_entity }
     end

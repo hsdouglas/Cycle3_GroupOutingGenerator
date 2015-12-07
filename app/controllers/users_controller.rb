@@ -16,6 +16,10 @@ class UsersController < ApplicationController
 
   def group_history
     # reference past and future groups with scopes here
+    # Hannah will do this scope later
+    
+    @user = User.find(params[:id])
+    @groups = @user.groups
   end
 
   # GET /users/new

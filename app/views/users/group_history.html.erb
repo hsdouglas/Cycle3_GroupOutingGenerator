@@ -1,0 +1,17 @@
+<h1>My Groups</h1>
+
+<div class="table-title">Coming Soon</div>
+<ul class="table">
+  <% @groups.each do |group| %>
+  <!-- should be all upcoming events --> 
+      <li><%= link_to group.title, group_path(group.tickets.first.group_id) %></li>
+  <% end %>
+</ul>
+
+<div class="table-title">Past</div>
+<ul class="table">
+  <% @groups.each do |group| %>
+  <!-- should be all past events --> 
+      <li><%= link_to group.title, group_path(group.tickets.first.group_id) %></li>
+  <% end %>
+</ul>
