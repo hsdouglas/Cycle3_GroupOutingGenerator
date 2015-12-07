@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  devise_for :users
   resources :credit_cards
   resources :groups
   resources :tickets
@@ -9,6 +10,8 @@ Rails.application.routes.draw do
   patch 'events/:id' => 'events#grouptickets', as: :grouptickets
 
   get 'users/:id/group_history' => 'users#group_history', as: :group_history
+
+  root to: "events#index"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
