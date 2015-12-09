@@ -129,10 +129,13 @@ ul.table {
 
 
 
-.event-attendance {
+.event-attendance, .event-location {
   margin: $gutter;
-  margin-bottom: 4 * $gutter;
   text-align: center;
+}
+
+.event {
+  padding-bottom: 8 * $gutter;
 }
 
 
@@ -169,4 +172,23 @@ ul.table {
     border-radius: 10000px;
     border: 2px solid white;
   }
+}
+
+/*
+  ======================
+  Events Index
+  ======================
+*/
+.events-index {
+  .event {
+    border-top: 40px solid $color-brand;
+  }
+}
+
+.events-date {
+  background-color: $color-brand;
+  font-weight: 600;
+  color: $color-text-white;
+  font-size: 24px;
+  padding: $gutter;
 }

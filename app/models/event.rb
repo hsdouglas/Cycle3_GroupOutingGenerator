@@ -1,6 +1,8 @@
 class Event < ActiveRecord::Base
 	has_many :tickets
 
+	scope :chronological, -> { order('start') }
+
 	mount_uploader :poster, PhotoUploader
 
 	def purchased_tickets
@@ -13,7 +15,7 @@ class Event < ActiveRecord::Base
 		if tickets.count % 6 == 0
 			newest = Group.new(title: "#{self.title} Group")
 			newest.save!
-			
+
 			tickets.each do |ticket|
 				ticket.group = newest
 				ticket.save!
