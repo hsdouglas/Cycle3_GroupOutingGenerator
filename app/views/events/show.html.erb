@@ -25,10 +25,9 @@
   <% end %>
 </div>
 
-<button onclick="showSomething()">Reserve My Spot</button>
+<button onclick="showSomething()">I want to go!</button>
 
 <dialog id="something">
-  <button onclick="hideSomething()">Cancel</button>
   <h3>Choose Payment Mechanism</h3>
   <select name="user[credit_card_id]">
     <option value="" selected="selected">Please select</option>
@@ -36,8 +35,7 @@
     <option value="2"><%= User.first.credit_cards.first.name %></option>
     <option value="3"><%= User.first.credit_cards.first.name %></option>
   </select>
-
-  <p>Event Name: <%= @event.title %></p>
+  <p>For: <%= @event.title %> on <%= @event.start.strftime("%m/%d/%Y at %I:%M%p") %></p>
 
   <%= simple_form_for(Ticket.new, :url => buyticket_path) do |f| %>
     <%#= f.hidden_field :user_id,  value: current_user.id %>
@@ -45,6 +43,7 @@
     <%= f.hidden_field :date_purchased, value: Date.today %>
     <%= f.button :submit, "Buy My Ticket", {class: "round tagalong-button fix-button"} %>
   <% end %>
+  <button onclick="hideSomething()">Cancel</button>
 </dialog>
 
 <div class="cell">
@@ -58,6 +57,13 @@
   <div class="cell-title">Event Date &amp; Time</div>
   <div class="cell-content">
     <%= @event.start.strftime("%m/%d/%Y at %I:%M%p") %>
+  </div>
+</div>
+
+<div class="cell">
+  <div class="cell-title">Price</div>
+  <div class="cell-content">
+    <%= number_to_currency(@event.price) %>
   </div>
 </div>
 
