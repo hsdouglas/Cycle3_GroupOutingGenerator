@@ -15,12 +15,18 @@ puts "Seeding the database..."
   user.last_name = Faker::Name.last_name
   user.first_name = Faker::Name.first_name 
   user.email = Faker::Internet.safe_email(user.first_name + '-' + user.last_name)
+  user.password = "Secret123"
   user.phone = Faker::Base.numerify('(###)-###-####')
   user.photo = Faker::Avatar.image
   user.bio = Faker::Hipster.paragraph
   user.birth_date = Faker::Date.between(30.years.ago, 15.years.ago)
   user.save!
 end
+
+credit_card = CreditCard.new
+credit_card.name = "Work VISA"
+credit_card.user_id = User.first.id
+credit_card.save!
 
 puts "There are now #{User.count} users..."
 
@@ -40,6 +46,7 @@ events_hash = {
 event0 = Event.new
 event0.title = events_hash.keys[0]
 event0.description = events_hash.values[0]
+event0.price = Faker::Commerce.price
 event0.start = Faker::Time.forward(14, :night)
 event0.venue_title = Faker::Company.name
 event0.address_1 = Faker::Address.street_address
@@ -51,6 +58,7 @@ event0.save!
 event1 = Event.new
 event1.title = events_hash.keys[1]
 event1.description = events_hash.values[1]
+event1.price = Faker::Commerce.price
 event1.start = Faker::Time.forward(14, :night)
 event1.venue_title = Faker::Company.name
 event1.address_1 = Faker::Address.street_address
@@ -62,6 +70,7 @@ event1.save!
 event2 = Event.new
 event2.title = events_hash.keys[2]
 event2.description = events_hash.values[2]
+event2.price = Faker::Commerce.price
 event2.start = Faker::Time.forward(14, :night)
 event2.venue_title = Faker::Company.name
 event2.address_1 = Faker::Address.street_address
@@ -73,6 +82,7 @@ event2.save!
 event3 = Event.new
 event3.title = events_hash.keys[3]
 event3.description = events_hash.values[3]
+event3.price = Faker::Commerce.price
 event3.start = Faker::Time.forward(14, :night)
 event3.venue_title = Faker::Company.name
 event3.address_1 = Faker::Address.street_address
@@ -84,6 +94,7 @@ event3.save!
 event4 = Event.new
 event4.title = events_hash.keys[4]
 event4.description = events_hash.values[4]
+event4.price = Faker::Commerce.price
 event4.start = Faker::Time.forward(14, :night)
 event4.venue_title = Faker::Company.name
 event4.address_1 = Faker::Address.street_address
@@ -95,6 +106,7 @@ event4.save!
 event5 = Event.new
 event5.title = events_hash.keys[5]
 event5.description = events_hash.values[5]
+event5.price = Faker::Commerce.price
 event5.start = Faker::Time.forward(14, :night)
 event5.venue_title = Faker::Company.name
 event5.address_1 = Faker::Address.street_address
@@ -106,6 +118,7 @@ event5.save!
 event6 = Event.new
 event6.title = events_hash.keys[6]
 event6.description = events_hash.values[6]
+event6.price = Faker::Commerce.price
 event6.start = Faker::Time.forward(14, :night)
 event6.venue_title = Faker::Company.name
 event6.address_1 = Faker::Address.street_address
@@ -117,6 +130,7 @@ event6.save!
 event7 = Event.new
 event7.title = events_hash.keys[7]
 event7.description = events_hash.values[7]
+event7.price = Faker::Commerce.price
 event7.start = Faker::Time.forward(14, :night)
 event7.venue_title = Faker::Company.name
 event7.address_1 = Faker::Address.street_address
@@ -128,6 +142,7 @@ event7.save!
 event8 = Event.new
 event8.title = events_hash.keys[8]
 event8.description = events_hash.values[8]
+event8.price = Faker::Commerce.price
 event8.start = Faker::Time.forward(14, :night)
 event8.venue_title = Faker::Company.name
 event8.address_1 = Faker::Address.street_address
