@@ -25,13 +25,6 @@
   <%= @user.bio %>
 </div>
 
-<div class="table-title">Groups</div>
-<ul class="table">
-  <% @groups.each do |group| %>
-      <li><%= link_to group.title, group_path(group.tickets.first.group_id) %></li>
-  <% end %>
-</ul>
-
 <div class="table-title">Purchase History</div>
 <ul class="table">
   <% @tickets.each do |ticket| %>
@@ -39,3 +32,4 @@
   <% end %>
 </ul>
 
+<div class="table-title"><%= link_to 'Click here to view your groups!', group_history_path(@user) %></div>

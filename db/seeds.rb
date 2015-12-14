@@ -230,26 +230,31 @@ puts "There are now #{Event.count} events..."
   past_ticket_0 = Ticket.new
   past_ticket_0.user_id = user.id
   past_ticket_0.event_id = event0.id
+  past_ticket_0.date_purchased = 1.month.ago
   past_ticket_0.save!
 
   past_ticket_1 = Ticket.new
   past_ticket_1.user_id = user.id
   past_ticket_1.event_id = event1.id
+  past_ticket_1.date_purchased = 2.weeks.ago
   past_ticket_1.save!
 
   past_ticket_2 = Ticket.new
   past_ticket_2.user_id = user.id
   past_ticket_2.event_id = event2.id
+  past_ticket_2.date_purchased = 3.weeks.ago
   past_ticket_2.save!
 
   upcoming_ticket_0 = Ticket.new
   upcoming_ticket_0.user_id = user.id
   upcoming_ticket_0.event_id = event3.id
+  upcoming_ticket_0.date_purchased = 1.week.ago
   upcoming_ticket_0.save!
 
   upcoming_ticket_1 = Ticket.new
   upcoming_ticket_1.user_id = user.id
   upcoming_ticket_1.event_id = event4.id
+  upcoming_ticket_1.date_purchased = 2.days.ago
   upcoming_ticket_1.save!
 end
 

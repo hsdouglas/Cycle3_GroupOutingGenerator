@@ -13,14 +13,6 @@ class User < ActiveRecord::Base
 
 	mount_uploader :photo, PhotoUploader
 
-	# need scopes for the my groups page
-	# upcoming groups, with the title of the event they're attending
-	# first, need the upcoming events of the user
-	# Group.first.tickets.first.event.start
-	# scope :upcoming, -> (time) User.joins(tickets: [:event, :group]).where(events: {"start > ?", time})
-	# scope :upcoming, -> { where('start > ?', DateTime.current )}
-	# scope :past, -> { where('start < ?', DateTime.current )}
-
 	# def upcoming(time)
 	# 	User.joins(tickets: [:event, :group]).where(events: ("start > ?", time))
 	# end
@@ -30,6 +22,24 @@ class User < ActiveRecord::Base
 		self.tickets.each do |ticket|
 			groups << ticket.group
 		end
+		groups
+	end
+
+	def get_past_groups
+		past_groups = []
+		self.tickets.grouped.past.each do |ticket|
+			# ticket.group.get_members
+			past_groups << ticket.group
+		end
+		past_groups
+	end
+
+	def get_upcoming_groups
+		upcoming_groups = []
+		self.tickets.grouped.upcoming.each do |ticket|
+			upcoming_groups << ticket.group
+		end
+		upcoming_groups
 	end
 
 	def anonymized_name
