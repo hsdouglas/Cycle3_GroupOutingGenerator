@@ -1,13 +1,7 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+
 require 'faker'
 
-puts "Seeding the database..."
+# ======= set up data for use by all factories ==========
 
 # Credit card types:
 credit_cards_array = [ "VISA", "DCCB", "AMEX", "DISC", "MC"]
@@ -42,10 +36,11 @@ user_photos_array = [
       "https://upload.wikimedia.org/wikipedia/en/2/28/Deep_Fried_Man_portrait_-_real_name_Daniel_Friedman_-_South_African_Comedian.jpg",
       "http://e08595.medialib.glogster.com/media/b6/b600315676aa1767a0f7787ae7c72fd812066d9c21f23c255621742b98eb6a4c/african-american-rhinoplasty-young-man-nose-jpg.jpg",
       "http://womenshealth.gov/minority-health/african-americans/images/young-woman-smiling.gif",
-      "https://www.google.com/search?q=african+man&espv=2&biw=1392&bih=782&source=lnms&tbm=isch&sa=X&ved=0ahUKEwiBgef1iNzJAhUDPz4KHcg5B4cQ_AUIBigB#tbm=isch&q=filipino+man&imgdii=I7Qrek_afpU4gM%3A%3BI7Qrek_afpU4gM%3A%3BdfrsQqjMhGK0FM%3A&imgrc=I7Qrek_afpU4gM%3A"
+      "http://www.ilfordrecorder.co.uk/polopoly_fs/1.1222418.1330439953!/image/4104184943.jpg_gen/derivatives/landscape_630/4104184943.jpg",
+      "https://zaychishka.files.wordpress.com/2014/01/screen-shot-2014-01-12-at-2-17-52-pm.png"
     ]
 
-# Events:
+# Event titles and descriptions:
 events_hash = {
       "Carnegie Mellon University Philharmonic & Chorus" => "Under the direction of Andrés Cárdenes, the CMU Chorus will join the Philharmonic on Poulenc's Gloria. Debussy's Prelude to the Afternoon of a Faun and Maurice Ravel's Pavane for a Dead Princess will be conducted by Resident Conductor, Daniel Nesta Curtis. Under the direction of Thomas W. Douglas, the Choirs will perform Holst's In the Bleak Midwinter (arr. Thomas W. Douglas) and Joy Joy Joy (arr. Robert Page). Also on the program will be Gershwin's An American in Paris and the premiere of Mike Garson's Christmas is Here.",
       "Scotch'n'Soda Theatre Presents: Bang Bang Banality" => "A student-written one act play by Scotch'n'Soda member Bradley Plaxen. Directed by Donovan Powers and Brianna Hudock. Audience Participation is strongly encouraged! Join us for our December Slot production and help to answer the question: what makes a good person? Warning: Dark material and themes",
@@ -59,6 +54,158 @@ events_hash = {
       "Carrie Underwood @ CONSOL Energy Center" => "Seven-time Grammy winner and Pollstar’s three-time top female country touring artist, Carrie Underwood, who just released her fifth studio album, Storyteller, will launch a new arena tour in 2016 to take her new music on the road. The Storyteller Tour - Stories in the Round,in association with award-winning cosmetics brand ALMAY, will kick off on January 30 in Jacksonville,Florida, playing 40 arenas across the U.S. and Canada. “I can’t wait to play new music from Storyteller for the fans,” shares Underwood. 'I am so blessed to have this career and get to do to the things I do, but there is nothing like that moment when I get to step onto the stage to sing and all the fans are singing along with me.'",
       "Pittsburgh Winter Beerfest 2016" => "Join us for the 3rd Annual Pittsburgh Winter Beerfest! Now one fo the Top Ten Largest Craft Beer Festivals in the country! 300-350 Craft Beers from down the street and around the country! Food booths by local restaurants & food trucks! Head over to our website for all of the details. One session each night. Friday and Saturday February 26 & 27, 6:30pm Early Admission, 7:30pm Regular Admission. Event ends at 11pm. All proceeds benefit Animal Rescue Partners, a 501-c-3 tax exempt organization, and their local partners Biggie's Bullies. REMEMBER, GET EARLY ADMISSION TICKETS FOR THE PRICE OF REGULAR ADMISSION UNTIL CHRISTMAS DAY!",
     }
+
+# Existing groups:
+
+
+# =========== Use that data to create seeds ===============
+
+puts "Seeding the database... Be patient; sourcing the photos for users and events takes a while!"
+
+event0 = Event.new
+event0.remote_poster_url = "https://img.evbuc.com/https%3A%2F%2Fimg.evbuc.com%2Fhttps%253A%252F%252Fcdn.evbuc.com%252Fimages%252F14973785%252F149726331731%252F1%252Foriginal.jpg%3Frect%3D0%252C67%252C400%252C200%26s%3D27186e07bfc18eed0427f0b30de49d07?w=1000&s=0c5ac13545e8dda31734162b3db5a3d5"
+event0.title = events_hash.keys[0]
+event0.description = events_hash.values[0]
+event0.start = Time.new(2015, 12, 9, 15, 0, 0)
+event0.price = Faker::Commerce.price
+event0.venue_title = Faker::Company.name
+event0.address_1 = Faker::Address.street_address
+event0.city = "Pittsburgh"
+event0.state = "PA"
+event0.zip = "15217"
+event0.save!
+
+event1 = Event.new
+event1.remote_poster_url = "https://img.evbuc.com/https%3A%2F%2Fimg.evbuc.com%2Fhttps%253A%252F%252Fcdn.evbuc.com%252Fimages%252F17156901%252F114219547983%252F1%252Foriginal.jpg%3Frect%3D127%252C0%252C770%252C385%26s%3Dd1315cfac44c58142846df0e51c27a80?w=1000&s=10cad570065c5d1a60e849ad781b5808"
+event1.title = events_hash.keys[1]
+event1.description = events_hash.values[1]
+event1.start = Time.new(2015, 12, 12, 14, 0, 0)
+event1.price = Faker::Commerce.price
+event1.venue_title = Faker::Company.name
+event1.address_1 = Faker::Address.street_address
+event1.city = "Pittsburgh"
+event1.state = "PA"
+event1.zip = "15217"
+event1.save!
+
+event2 = Event.new
+event2.remote_poster_url = "http://bestevents.us/wp-content/uploads/2015/10/1445770197_11215512_10153375988182655_8744649680193176618_n.jpg"
+event2.title = events_hash.keys[2]
+event2.description = events_hash.values[2]
+event2.start = Time.new(2015, 12, 17, 14, 0, 0)
+event2.price = Faker::Commerce.price
+event2.venue_title = Faker::Company.name
+event2.address_1 = Faker::Address.street_address
+event2.city = "Pittsburgh"
+event2.state = "PA"
+event2.zip = "15217"
+event2.save!
+
+event3 = Event.new
+event3.remote_poster_url = "https://sportsblogmovement.files.wordpress.com/2013/05/bruins-penguins-away.jpg"
+event3.title = events_hash.keys[3]
+event3.description = events_hash.values[3]
+event3.start = Time.new(2015, 12, 18, 14, 0, 0)
+event3.price = Faker::Commerce.price
+event3.venue_title = Faker::Company.name
+event3.address_1 = Faker::Address.street_address
+event3.city = "Pittsburgh"
+event3.state = "PA"
+event3.zip = "15217"
+event3.save!
+
+event4 = Event.new
+event4.remote_poster_url = "http://cdn.fansided.com/wp-content/blogs.dir/136/files/2012/01/steelersbroncos.jpg"
+event4.title = events_hash.keys[4]
+event4.description = events_hash.values[4]
+event4.start = Time.new(2015, 12, 20, 11, 25, 0)
+event4.price = Faker::Commerce.price
+event4.venue_title = Faker::Company.name
+event4.address_1 = Faker::Address.street_address
+event4.city = "Pittsburgh"
+event4.state = "PA"
+event4.zip = "15217"
+event4.save!
+
+event5 = Event.new
+event5.remote_poster_url = "https://phipps.conservatory.org/images/made/assets/images/as_standard_image/winterhead_700_330auto_s_c1.jpg"
+event5.title = events_hash.keys[5]
+event5.description = events_hash.values[5]
+event5.start = Time.new(2015, 12, 21, 15, 30, 0)
+event5.price = Faker::Commerce.price
+event5.venue_title = Faker::Company.name
+event5.address_1 = Faker::Address.street_address
+event5.city = "Pittsburgh"
+event5.state = "PA"
+event5.zip = "15217"
+event5.save!
+
+event6 = Event.new
+event6.remote_poster_url = "http://pittsburgh.escapetheroom.com/wp-content/uploads/2015/11/escapepittsburgh.png"
+event6.title = events_hash.keys[6]
+event6.description = events_hash.values[6]
+event6.start = Time.new(2015, 12, 23, 10, 30, 0)
+event6.price = Faker::Commerce.price
+event6.venue_title = Faker::Company.name
+event6.address_1 = Faker::Address.street_address
+event6.city = "Pittsburgh"
+event6.state = "PA"
+event6.zip = "15217"
+event6.save!
+
+event7 = Event.new
+event7.remote_poster_url = "http://www.cmoa.org/uploadedImages/CMA_Site/Events/yoga%20website%202.jpg"
+event7.title = events_hash.keys[7]
+event7.description = events_hash.values[7]
+event7.start = Time.new(2016, 1, 17, 6, 0, 0)
+event7.price = Faker::Commerce.price
+event7.venue_title = Faker::Company.name
+event7.address_1 = Faker::Address.street_address
+event7.city = "Pittsburgh"
+event7.state = "PA"
+event7.zip = "15217"
+event7.save!
+
+event8 = Event.new
+event8.remote_poster_url = "http://commfilm.ucalgary.ca/moviesthatmatter/wp-content/uploads/2015/01/Poverty_Inc_85x11_Calgary.jpg"
+event8.title = events_hash.keys[8]
+event8.description = events_hash.values[8]
+event8.start = Time.new(2016, 1, 25, 14, 30, 0)
+event8.price = Faker::Commerce.price
+event8.venue_title = Faker::Company.name
+event8.address_1 = Faker::Address.street_address
+event8.city = "Pittsburgh"
+event8.state = "PA"
+event8.zip = "15217"
+event8.save!
+
+event9 = Event.new
+event9.remote_poster_url = "https://cbsy108.files.wordpress.com/2015/10/carrie.png?w=640&h=360&crop=1"
+event9.title = events_hash.keys[8]
+event9.description = events_hash.values[8]
+event9.start = Time.new(2016, 2, 17, 14, 0, 0)
+event9.price = Faker::Commerce.price
+event9.venue_title = Faker::Company.name
+event9.address_1 = Faker::Address.street_address
+event9.city = "Pittsburgh"
+event9.state = "PA"
+event9.zip = "15217"
+event9.save!
+
+event10 = Event.new
+event10.remote_poster_url = "https://www.beerfesttickets.com/uplimage/pittsburghbeerfest_250.jpg"
+event10.title = events_hash.keys[8]
+event10.description = events_hash.values[8]
+event10.start = Time.new(2016, 2, 26, 11, 0, 0)
+event10.price = Faker::Commerce.price
+event10.venue_title = Faker::Company.name
+event10.address_1 = Faker::Address.street_address
+event10.city = "Pittsburgh"
+event10.state = "PA"
+event10.zip = "15217"
+event10.save!
+
+puts "There are now #{Event.count} events..."
 
 # Users:
 30.times do |user_number|
@@ -79,141 +226,33 @@ events_hash = {
   credit_card.card_type = credit_cards_array.sample
   credit_card.user_id = user.id
   credit_card.save!
+
+  past_ticket_0 = Ticket.new
+  past_ticket_0.user_id = user.id
+  past_ticket_0.event_id = event0.id
+  past_ticket_0.save!
+
+  past_ticket_1 = Ticket.new
+  past_ticket_1.user_id = user.id
+  past_ticket_1.event_id = event1.id
+  past_ticket_1.save!
+
+  past_ticket_2 = Ticket.new
+  past_ticket_2.user_id = user.id
+  past_ticket_2.event_id = event2.id
+  past_ticket_2.save!
+
+  upcoming_ticket_0 = Ticket.new
+  upcoming_ticket_0.user_id = user.id
+  upcoming_ticket_0.event_id = event3.id
+  upcoming_ticket_0.save!
+
+  upcoming_ticket_1 = Ticket.new
+  upcoming_ticket_1.user_id = user.id
+  upcoming_ticket_1.event_id = event4.id
+  upcoming_ticket_1.save!
 end
 
 puts "There are now #{User.count} users..."
 puts "and #{CreditCard.count} credit cards..."
 
-event0 = Event.new
-event0.title = events_hash.keys[0]
-event0.description = events_hash.values[0]
-event0.start = Time.new(2015, 12, 9, 20, 0, 0)
-event0.price = Faker::Commerce.price
-event0.venue_title = Faker::Company.name
-event0.address_1 = Faker::Address.street_address
-event0.city = "Pittsburgh"
-event0.state = "PA"
-event0.zip = "15217"
-event0.save!
-
-event1 = Event.new
-event1.title = events_hash.keys[1]
-event1.description = events_hash.values[1]
-event1.start = Time.new(2015, 12, 12, 19, 0, 0)
-event1.price = Faker::Commerce.price
-event1.venue_title = Faker::Company.name
-event1.address_1 = Faker::Address.street_address
-event1.city = "Pittsburgh"
-event1.state = "PA"
-event1.zip = "15217"
-event1.save!
-
-event2 = Event.new
-event2.title = events_hash.keys[2]
-event2.description = events_hash.values[2]
-event2.start = Time.new(2015, 12, 17, 19, 0, 0)
-event2.price = Faker::Commerce.price
-event2.venue_title = Faker::Company.name
-event2.address_1 = Faker::Address.street_address
-event2.city = "Pittsburgh"
-event2.state = "PA"
-event2.zip = "15217"
-event2.save!
-
-event3 = Event.new
-event3.title = events_hash.keys[3]
-event3.description = events_hash.values[3]
-event3.start = Time.new(2015, 12, 18, 19, 0, 0)
-event3.price = Faker::Commerce.price
-event3.venue_title = Faker::Company.name
-event3.address_1 = Faker::Address.street_address
-event3.city = "Pittsburgh"
-event3.state = "PA"
-event3.zip = "15217"
-event3.save!
-
-event4 = Event.new
-event4.title = events_hash.keys[4]
-event4.description = events_hash.values[4]
-event4.start = Time.new(2015, 12, 20, 16, 25, 0)
-event4.price = Faker::Commerce.price
-event4.venue_title = Faker::Company.name
-event4.address_1 = Faker::Address.street_address
-event4.city = "Pittsburgh"
-event4.state = "PA"
-event4.zip = "15217"
-event4.save!
-
-event5 = Event.new
-event5.title = events_hash.keys[5]
-event5.description = events_hash.values[5]
-event5.start = Time.new(2015, 12, 21, 17, 30, 0)
-event5.price = Faker::Commerce.price
-event5.venue_title = Faker::Company.name
-event5.address_1 = Faker::Address.street_address
-event5.city = "Pittsburgh"
-event5.state = "PA"
-event5.zip = "15217"
-event5.save!
-
-event6 = Event.new
-event6.title = events_hash.keys[6]
-event6.description = events_hash.values[6]
-event6.start = Time.new(2015, 12, 23, 15, 30, 0)
-event6.price = Faker::Commerce.price
-event6.venue_title = Faker::Company.name
-event6.address_1 = Faker::Address.street_address
-event6.city = "Pittsburgh"
-event6.state = "PA"
-event6.zip = "15217"
-event6.save!
-
-event7 = Event.new
-event7.title = events_hash.keys[7]
-event7.description = events_hash.values[7]
-event7.start = Time.new(2016, 1, 17, 11, 0, 0)
-event7.price = Faker::Commerce.price
-event7.venue_title = Faker::Company.name
-event7.address_1 = Faker::Address.street_address
-event7.city = "Pittsburgh"
-event7.state = "PA"
-event7.zip = "15217"
-event7.save!
-
-event8 = Event.new
-event8.title = events_hash.keys[8]
-event8.description = events_hash.values[8]
-event8.start = Time.new(2016, 1, 25, 19, 30, 0)
-event8.price = Faker::Commerce.price
-event8.venue_title = Faker::Company.name
-event8.address_1 = Faker::Address.street_address
-event8.city = "Pittsburgh"
-event8.state = "PA"
-event8.zip = "15217"
-event8.save!
-
-event9 = Event.new
-event9.title = events_hash.keys[8]
-event9.description = events_hash.values[8]
-event9.start = Time.new(2016, 2, 17, 19, 0, 0)
-event9.price = Faker::Commerce.price
-event9.venue_title = Faker::Company.name
-event9.address_1 = Faker::Address.street_address
-event9.city = "Pittsburgh"
-event9.state = "PA"
-event9.zip = "15217"
-event9.save!
-
-event10 = Event.new
-event10.title = events_hash.keys[8]
-event10.description = events_hash.values[8]
-event10.start = Time.new(2016, 2, 26, 16, 0, 0)
-event10.price = Faker::Commerce.price
-event10.venue_title = Faker::Company.name
-event10.address_1 = Faker::Address.street_address
-event10.city = "Pittsburgh"
-event10.state = "PA"
-event10.zip = "15217"
-event10.save!
-
-puts "There are now #{Event.count} events..."

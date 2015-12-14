@@ -1,6 +1,6 @@
 class User < ActiveRecord::Base
 
- 	attr_accessor :remote_image_url
+ 	attr_accessor :remote_photo_url
 
 	# Include default devise modules. Others available are:
 	# :confirmable, :lockable, :timeoutable and :omniauthable

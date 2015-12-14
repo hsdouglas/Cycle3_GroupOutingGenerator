@@ -1,4 +1,6 @@
 class Event < ActiveRecord::Base
+	attr_accessor :remote_poster_url
+
 	has_many :tickets
 
 	scope :chronological, -> { order('start') }
