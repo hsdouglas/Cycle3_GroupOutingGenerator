@@ -39,21 +39,23 @@ puts "There are now #{User.count} users..."
 
 # Events:
 events_hash = {
-			"Lord of the Flies" => "Lord of the Flies, adapted from the classic novel, tells the tale of 11 students trapped on an island with no adults. They must fend for themselves and make their own rules – their survival depends on it. Some are driven by reason, others by basic human instinct. As they battle for dominance, they slowly realize that the real thing to fear is themselves.",
-			"First Friday Art Show & Live Music" => "Come view new artwork by John Muldoon and photography from Pat Bruener Photography this Friday at the Internation Children's Art Gallery on Penn Ave. Entertainment via Live music will be provided by members of The Clock Reads.",
-			"Coffee and French Cinema" => "Coffee from Espresso a Mano will complement screenings of films by Godard and Melville. Coffee will be on sale from 6:30. Godard's Made in U.S.A. begins at 7:00 and Melville's Le Cercle Rouge at 9:00.",
-			"FUSE@PSO!" => "Creative Director Steve Hackman turns his attention to Aaron Copland's Appalachian Spring, the orchestral suite that captures the essence of an ideal America - one of open fields and endless possibilities, and the music of Bon Iver, the Grammy Award-winning American indie folk band. Together the two form a beautiful, contemplative and simply gorgeous evening of music, featuring guest vocalists and the Pittsburgh Symphony Orchestra.",
-			"Phipps Winter Flower Show" => "The most magical time of the year arrives with the opening of Winter Flower Show and Light Garden on Fri., Nov. 27. Bringing the familiar carol “Deck the Halls” to life, each of the changing exhibit rooms will embody the spirit of the holiday tune, complete with artful arrangements of LED lights, decorated fir trees, whimsical props, and, of course, plenty of seasonal favorites such as colorful poinsettias, aromatic paperwhites, showy amaryllis and a jaw-dropping massive evergreen situated in the pond of the Victoria Room. ",
-			"Straight No Chaser" => "If the phrase 'male a cappella group' conjures up an image of students in blue blazers, ties, and khakis singing traditional college songs on ivied campuses... think again. Straight No Chaser (SNC) are neither strait-laced nor straight-faced, but neither are they vaudeville-style kitsch. They have emerged as a phenomenon with a massive fan base, numerous national TV appearances and proven success with CD releases. THE NEW OLD FASHIONED TOUR comes to town on the heels of the release of their new album 'The New Old Fashioned' (in stores October 27th), their fifth album release through Atlantic Records. ",
-			"Denver Broncos at Pittsburgh Steelers" => "",
-			"LA Kings at Pittsburgh Penguins" => "",
-			"The Nutcracker" => "Holiday magic envelopes the stage in Pittsburgh Ballet Theatre's classic The Nutcracker.  Set to Tchaikovsky's sublime score, a dreamlike journey unfolds through a moonlit snow scape to a whimsical Land of Enchantment. More than 100 dancers bring to life iconic choreography from the wondrous waltz of the snowflakes to the pristine Sugar Plum Fairy pas de deux.",
+			"Carnegie Mellon University Philharmonic & Chorus" => "Under the direction of Andrés Cárdenes, the CMU Chorus will join the Philharmonic on Poulenc's Gloria. Debussy's Prelude to the Afternoon of a Faun and Maurice Ravel's Pavane for a Dead Princess will be conducted by Resident Conductor, Daniel Nesta Curtis. Under the direction of Thomas W. Douglas, the Choirs will perform Holst's In the Bleak Midwinter (arr. Thomas W. Douglas) and Joy Joy Joy (arr. Robert Page). Also on the program will be Gershwin's An American in Paris and the premiere of Mike Garson's Christmas is Here.",
+			"Scotch'n'Soda Theatre Presents: Bang Bang Banality" => "A student-written one act play by Scotch'n'Soda member Bradley Plaxen. Directed by Donovan Powers and Brianna Hudock. Audience Participation is strongly encouraged! Join us for our December Slot production and help to answer the question: what makes a good person? Warning: Dark material and themes",
+			"The Music of Star Wars: Episodes I-VI" => "Conducted by Daniel Meyer, this concert will feature the iconic music of John Williams from the first six Star Wars films, and will be the perfect warm-up to the movie premiere of Star Wars Episode VII: The Force Awakens on December 18. The program includes fan favorites The Imperial March, Across the Stars, The Main Title and many more! The concert will be presented without intermission, ending in plenty of time for a midnight showing of the new movie at a local movie theater!",
+			"Pittsburgh Penguins vs. Boston Bruins" => "Ticket+ allows you the opportunity to add concession value to your ticket. Simply choose the number of tickets you wish to purchase in the Ticket+ box below and present your ticket at any concession stand upon checkout. Your ticket barcode will be swiped and the appropriate amount will be debited from your Ticket+. All Ticket+ money expires at the end of the game date printed on your ticket.",
+			"Pittsburgh Steelers vs. Denver Broncos" => "Section 120 Rows BB-HH are designated as the Family Section. No Alcohol will be permitted in this area.",
+			"Winter Flower Show and Light Garden" => "The most magical time of the year arrives with the opening of Winter Flower Show and Light Garden on Fri., Nov. 27. Bringing the familiar carol “Deck the Halls” to life, each of the changing exhibit rooms will embody the spirit of the holiday tune, complete with artful arrangements of LED lights, decorated fir trees, whimsical props, and, of course, plenty of seasonal favorites such as colorful poinsettias, aromatic paperwhites, showy amaryllis and a jaw-dropping massive evergreen situated in the pond of the Victoria Room. Little ones can also be on the lookout for tiny troll figures hidden throughout the displays, a clever twist on the “troll the ancient yuletide carol” lyric of the song. Adding to the festive atmosphere, in our Outdoor and Discovery Gardens, the Winter Light Garden will sparkle with luminous orbs, trees and fountains of light. Garden Railroad will be on view too, taking you on a magical trip through the plots of nine fairy tales and fables brought to life with interactive buttons for children to push, and miniature living plants, shrubs and trees.",
+			"Escape the Room PA" => "Escape the Room is a fun, interactive entertainment concept located in Pittsburgh.  While it looks like any other ordinary room, it’s actually a real life adventure game designed for small groups of friends, families, co-w0rkers or strangers.  Find the hidden objects, figure out the clues and solve the puzzles to earn your freedom and “Escape the Room.”  You have 60 minutes, so be quick! Book today to see if you have what it takes to escape.",
+			"Yoga at CMOA" => "Have you ever wandered into Carnegie Museum of Art’s magnificent Hall of Sculpture and thought, “This would be a great place to work on my downward dog”? Well, now’s your chance. Join CMOA for three yoga sessions in the Hall this winter with instructors from Pittsburgh’s The Yoga Hive. Each 60-minute session will be accompanied by live music from a member of the Pittsburgh Symphony Orchestra. Participate in one session or all three. A three-session package is available for a discounted price. All levels are welcome. And, stick around after yoga to enjoy the world-class art and specimen collections at Carnegie Museums of Art and Natural History for FREE. Participants must be age 16 or older, and anyone under 18 must be accompanied by a parent or legal guardian. All participants will be required to sign waivers upon arrival to event. Please bring your own mat, if you are able. Water will be provided.",
+			"Poverty, Inc. Screening @ AMC Loews Waterfront" => "After a successful screening in October, the award winning documentary Poverty, Inc. is back! In order for this event to happen, a 74 ticket threshold must be met. Tickets are only available online and you will not be charged until the threshold is met. Purchase tickets and watch trailer here: https://www.tugg.com/events/77080 Film Synopsis: 'I see multiple colonial governors,'' says Ghanaian software entrepreneur Herman Chinery-Hesse of the international development establishment in Africa. “We are held captive by the donor community.” The West has positioned itself as the protagonist of development, giving rise to a vast multi-billion dollar poverty industry — the business of doing good has never been better. Yet the results have been mixed, in some cases even catastrophic, and leaders in the developing world are growing increasingly vocal in calling for change. Drawing from over 200 interviews filmed in 20 countries, Poverty, Inc. unearths an uncomfortable side of charity we can no longer ignore. From TOMs Shoes to international adoptions, from solar panels to U.S. agricultural subsidies, the film challenges each of us to ask the tough question: Could I be part of the problem?",
+      		"Carrie Underwood @ CONSOL Energy Center" => "Seven-time Grammy winner and Pollstar’s three-time top female country touring artist, Carrie Underwood, who just released her fifth studio album, Storyteller, will launch a new arena tour in 2016 to take her new music on the road. The Storyteller Tour - Stories in the Round,in association with award-winning cosmetics brand ALMAY, will kick off on January 30 in Jacksonville,Florida, playing 40 arenas across the U.S. and Canada. “I can’t wait to play new music from Storyteller for the fans,” shares Underwood. 'I am so blessed to have this career and get to do to the things I do, but there is nothing like that moment when I get to step onto the stage to sing and all the fans are singing along with me.'",
+      		"Pittsburgh Winter Beerfest 2016" => "Join us for the 3rd Annual Pittsburgh Winter Beerfest! Now one fo the Top Ten Largest Craft Beer Festivals in the country! 300-350 Craft Beers from down the street and around the country! Food booths by local restaurants & food trucks! Head over to our website for all of the details. One session each night. Friday and Saturday February 26 & 27, 6:30pm Early Admission, 7:30pm Regular Admission. Event ends at 11pm. All proceeds benefit Animal Rescue Partners, a 501-c-3 tax exempt organization, and their local partners Biggie's Bullies. REMEMBER, GET EARLY ADMISSION TICKETS FOR THE PRICE OF REGULAR ADMISSION UNTIL CHRISTMAS DAY!",
 		}
 
 event0 = Event.new
 event0.title = events_hash.keys[0]
 event0.description = events_hash.values[0]
-event0.start = Faker::Time.forward(7, :night)
+event0.start = Time.new(2015, 12, 9, 20, 0, 0)
 event0.price = Faker::Commerce.price
 event0.venue_title = Faker::Company.name
 event0.address_1 = Faker::Address.street_address
@@ -65,7 +67,7 @@ event0.save!
 event1 = Event.new
 event1.title = events_hash.keys[1]
 event1.description = events_hash.values[1]
-event1.start = Faker::Time.forward(7, :night)
+event1.start = Time.new(2015, 12, 12, 19, 0, 0)
 event1.price = Faker::Commerce.price
 event1.venue_title = Faker::Company.name
 event1.address_1 = Faker::Address.street_address
@@ -77,7 +79,7 @@ event1.save!
 event2 = Event.new
 event2.title = events_hash.keys[2]
 event2.description = events_hash.values[2]
-event2.start = Faker::Time.forward(7, :night)
+event2.start = Time.new(2015, 12, 17, 19, 0, 0)
 event2.price = Faker::Commerce.price
 event2.venue_title = Faker::Company.name
 event2.address_1 = Faker::Address.street_address
@@ -89,7 +91,7 @@ event2.save!
 event3 = Event.new
 event3.title = events_hash.keys[3]
 event3.description = events_hash.values[3]
-event3.start = Faker::Time.forward(7, :night)
+event3.start = Time.new(2015, 12, 18, 19, 0, 0)
 event3.price = Faker::Commerce.price
 event3.venue_title = Faker::Company.name
 event3.address_1 = Faker::Address.street_address
@@ -101,7 +103,7 @@ event3.save!
 event4 = Event.new
 event4.title = events_hash.keys[4]
 event4.description = events_hash.values[4]
-event4.start = Faker::Time.forward(7, :night)
+event4.start = Time.new(2015, 12, 20, 16, 25, 0)
 event4.price = Faker::Commerce.price
 event4.venue_title = Faker::Company.name
 event4.address_1 = Faker::Address.street_address
@@ -113,7 +115,7 @@ event4.save!
 event5 = Event.new
 event5.title = events_hash.keys[5]
 event5.description = events_hash.values[5]
-event5.start = Faker::Time.forward(7, :night)
+event5.start = Time.new(2015, 12, 21, 17, 30, 0)
 event5.price = Faker::Commerce.price
 event5.venue_title = Faker::Company.name
 event5.address_1 = Faker::Address.street_address
@@ -125,7 +127,7 @@ event5.save!
 event6 = Event.new
 event6.title = events_hash.keys[6]
 event6.description = events_hash.values[6]
-event6.start = Faker::Time.forward(7, :night)
+event6.start = Time.new(2015, 12, 23, 15, 30, 0)
 event6.price = Faker::Commerce.price
 event6.venue_title = Faker::Company.name
 event6.address_1 = Faker::Address.street_address
@@ -137,7 +139,7 @@ event6.save!
 event7 = Event.new
 event7.title = events_hash.keys[7]
 event7.description = events_hash.values[7]
-event7.start = Faker::Time.forward(7, :night)
+event7.start = Time.new(2016, 1, 17, 11, 0, 0)
 event7.price = Faker::Commerce.price
 event7.venue_title = Faker::Company.name
 event7.address_1 = Faker::Address.street_address
@@ -149,7 +151,7 @@ event7.save!
 event8 = Event.new
 event8.title = events_hash.keys[8]
 event8.description = events_hash.values[8]
-event8.start = Faker::Time.forward(7, :night)
+event8.start = Time.new(2016, 1, 25, 19, 30, 0)
 event8.price = Faker::Commerce.price
 event8.venue_title = Faker::Company.name
 event8.address_1 = Faker::Address.street_address
@@ -157,5 +159,29 @@ event8.city = "Pittsburgh"
 event8.state = "PA"
 event8.zip = "15217"
 event8.save!
+
+event9 = Event.new
+event9.title = events_hash.keys[8]
+event9.description = events_hash.values[8]
+event9.start = Time.new(2016, 2, 17, 19, 0, 0)
+event9.price = Faker::Commerce.price
+event9.venue_title = Faker::Company.name
+event9.address_1 = Faker::Address.street_address
+event9.city = "Pittsburgh"
+event9.state = "PA"
+event9.zip = "15217"
+event9.save!
+
+event10 = Event.new
+event10.title = events_hash.keys[8]
+event10.description = events_hash.values[8]
+event10.start = Time.new(2016, 2, 26, 16, 0, 0)
+event10.price = Faker::Commerce.price
+event10.venue_title = Faker::Company.name
+event10.address_1 = Faker::Address.street_address
+event10.city = "Pittsburgh"
+event10.state = "PA"
+event10.zip = "15217"
+event10.save!
 
 puts "There are now #{Event.count} events..."
