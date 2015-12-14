@@ -9,6 +9,12 @@ require 'faker'
 
 puts "Seeding the database..."
 
+# Credit card types:
+credit_cards_array = [ "VISA", "DCCB", "AMEX", "DISC", "MC"]
+
+# User photos:
+user_photos_array = []
+
 # Users:
 40.times do
   user = User.new
@@ -17,16 +23,17 @@ puts "Seeding the database..."
   user.email = Faker::Internet.safe_email(user.first_name + '-' + user.last_name)
   user.password = "Secret123"
   user.phone = Faker::Base.numerify('(###)-###-####')
-  user.photo = Faker::Avatar.image
+  user.remote_image_url = Faker::Avatar.image
   user.bio = Faker::Hipster.paragraph
   user.birth_date = Faker::Date.between(30.years.ago, 15.years.ago)
   user.save!
-end
 
-credit_card = CreditCard.new
-credit_card.name = "Work VISA"
-credit_card.user_id = User.first.id
-credit_card.save!
+  credit_card = CreditCard.new
+  credit_card.name = "Personal"
+  credit_card.card_type = credit_cards_array.sample
+  credit_card.user_id = user.id
+  credit_card.save!
+end
 
 puts "There are now #{User.count} users..."
 
