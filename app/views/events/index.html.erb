@@ -1,35 +1,7 @@
 <p id="notice"><%= notice %></p>
 
-<div class="events-index">
-  <% current_date = Date.today %>
-  <div class="events-date">
-    <%= current_date.strftime("%A, %B %e") %>
-  </div>
-  <% @events.each do |event| %>
-    <% if event.start > current_date %>
-      </div><div class="events-index">
-        <% current_date += 1.day %>
-      <div class="events-date">
-        <%= current_date.strftime("%A, %B %e") %>
-      </div>
-    <% end %>
-    <div class="event">
-      <div class="event-image">
-        <%= image_tag event.poster_url, style: "max-width: 365px;" %>
-      </div>
-      <div class="event-title">
-        <%= link_to event.title, event %>
-      </div>
-      <div class="event-location">
-        <%= event.start.strftime("%l:%M %P") %> at <%= event.venue_title %>
-      </div>
-      <div class="event-attendance">
-        <% if event.purchased_tickets == 1 %>
-          There is currently <%= event.purchased_tickets %> person attending!
-        <% else %>
-          There are currently <%= event.purchased_tickets %> people attending!
-        <% end %>
-      </div>
-    </div>
-  <% end %>
+<%= content_tag "div", id: "events", data: {events: @events} do %>
+<% end %>
+
+<div id="events-index" class="events-index">
 </div>
