@@ -13,4 +13,8 @@ class Ticket < ActiveRecord::Base
 	scope :past, -> { joins(:event).where("events.start < ?", Time.now).order("events.start ASC")}
 	scope :upcoming, -> { joins(:event).where("events.start >= ?", Time.now).order("events.start ASC")}
 
+	scope :with_group_notification, -> { where("notification_received IS NOT NULL")}
+	scope :received, -> { where("notification_received = ?", true)}
+	scope :not_received, -> { where("notification_received = ?", false)}
+
 end

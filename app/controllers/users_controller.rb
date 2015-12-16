@@ -21,6 +21,11 @@ class UsersController < ApplicationController
     @past_groups = @user.get_past_groups
   end
 
+  def notifications
+    @notifications_received = current_user.get_received_group_notifications
+    @notifications_not_received = current_user.get_unreceived_group_notifications
+  end
+
   # GET /users/new
   def new
     @user = User.new

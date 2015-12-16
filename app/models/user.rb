@@ -44,4 +44,13 @@ class User < ActiveRecord::Base
 	def anonymized_name
 		"#{first_name} #{last_name[0]}."
 	end
+
+	def get_received_group_notifications
+		self.tickets.received
+	end
+
+	def get_unreceived_group_notifications
+		self.tickets.not_received
+	end
+
 end

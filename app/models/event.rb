@@ -23,6 +23,7 @@ class Event < ActiveRecord::Base
 
 			tickets.each do |ticket|
 				ticket.group = newest
+				ticket.notification_received = false
 				ticket.save!
 			end
 		end
