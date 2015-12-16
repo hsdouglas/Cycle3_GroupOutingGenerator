@@ -21,8 +21,8 @@ class Group < ActiveRecord::Base
 	end
 
 	def generate_group_notification
-		GroupOutingGenerator::Application::GROUP_MATCH_NOTIFICATION = "You've been placed into group #{self.id}!"
-		# puts "You've been grouped in group #{self.id}"
+		#GroupOutingGenerator::Application::GROUP_MATCH_NOTIFICATION = "You've been placed into group #{self.id}!"
+		puts "You've been grouped in group #{self.id}"
 	end
 
 	# first determine the message...

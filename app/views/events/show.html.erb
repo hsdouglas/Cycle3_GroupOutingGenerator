@@ -31,14 +31,13 @@
   <h3>Choose Payment Mechanism</h3>
   <select name="user[credit_card_id]">
     <option value="" selected="selected">Please select</option>
-    <option value="1"><%= User.first.credit_cards.first.name %></option>
-    <option value="2"><%= User.first.credit_cards.first.name %></option>
-    <option value="3"><%= User.first.credit_cards.first.name %></option>
+    <option value="1"><%= current_user.credit_cards.first.name %> <%= current_user.credit_cards.first.card_type %></option>
+    <option value="2"><%= current_user.credit_cards.second.name %> <%= current_user.credit_cards.second.card_type %></option>
   </select>
   <p>For: <%= @event.title %> on <%= @event.start.strftime("%m/%d/%Y at %I:%M%p") %></p>
 
   <%= simple_form_for(Ticket.new, :url => buyticket_path) do |f| %>
-    <%#= f.hidden_field :user_id,  value: current_user.id %>
+    <%= f.hidden_field :user_id,  value: current_user.id %>
     <%= f.hidden_field :event_id, value: @event.id %>
     <%= f.hidden_field :date_purchased, value: Date.today %>
     <%= f.button :submit, "Buy My Ticket", {class: "round tagalong-button fix-button"} %>

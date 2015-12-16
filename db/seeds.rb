@@ -182,8 +182,8 @@ event8.save!
 
 event9 = Event.new
 event9.remote_poster_url = "https://cbsy108.files.wordpress.com/2015/10/carrie.png?w=640&h=360&crop=1"
-event9.title = events_hash.keys[8]
-event9.description = events_hash.values[8]
+event9.title = events_hash.keys[9]
+event9.description = events_hash.values[9]
 event9.start = Time.new(2016, 2, 17, 14, 0, 0)
 event9.price = Faker::Commerce.price
 event9.venue_title = Faker::Company.name
@@ -195,8 +195,8 @@ event9.save!
 
 event10 = Event.new
 event10.remote_poster_url = "https://www.beerfesttickets.com/uplimage/pittsburghbeerfest_250.jpg"
-event10.title = events_hash.keys[8]
-event10.description = events_hash.values[8]
+event10.title = events_hash.keys[10]
+event10.description = events_hash.values[10]
 event10.start = Time.new(2016, 2, 26, 11, 0, 0)
 event10.price = Faker::Commerce.price
 event10.venue_title = Faker::Company.name
@@ -276,9 +276,75 @@ end
 puts "There are now #{User.count} users..."
 puts "and #{CreditCard.count} credit cards..."
 
+# =========================================
+# Make a user specifically for Ella <-- login applicable
+ella = User.new
+ella.last_name = Faker::Name.last_name
+ella.first_name = "Ella"
+ella.email = Faker::Internet.safe_email(ella.first_name + '-' + ella.last_name)
+ella.password = "Secret123"
+ella.phone = Faker::Base.numerify('(###)-###-####')
+#user.remote_photo_url = Faker::Avatar.image
+ella.remote_photo_url = user_photos_array[3]
+ella.bio = Faker::Hipster.paragraph
+ella.birth_date = 24.years.ago
+ella.save!
+
+# =========================================
+# Give ella two credit cards
+credit_card_0 = CreditCard.new
+credit_card_0.name = credit_card_names_array.sample
+credit_card_0.card_type = credit_card_types_array.sample
+credit_card_0.user_id = ella.id
+credit_card_0.save!
+
+credit_card_1 = CreditCard.new
+credit_card_1.name = credit_card_names_array.sample
+credit_card_1.card_type = credit_card_types_array.sample
+credit_card_1.user_id = ella.id
+credit_card_1.save!
+
+# =========================================
+# Give ella three tickets from past events
+past_ticket_0 = Ticket.new
+past_ticket_0.user_id = ella.id
+past_ticket_0.event_id = event0.id
+past_ticket_0.date_purchased = 1.month.ago
+past_ticket_0.save!
+
+past_ticket_1 = Ticket.new
+past_ticket_1.user_id = ella.id
+past_ticket_1.event_id = event1.id
+past_ticket_1.date_purchased = 2.weeks.ago
+past_ticket_1.save!
+
+past_ticket_2 = Ticket.new
+past_ticket_2.user_id = ella.id
+past_ticket_2.event_id = event2.id
+past_ticket_2.date_purchased = 3.weeks.ago
+past_ticket_2.save!
+
+# =========================================
+# Give ella two tickets from future events
+upcoming_ticket_0 = Ticket.new
+upcoming_ticket_0.user_id = ella.id
+upcoming_ticket_0.event_id = event3.id
+upcoming_ticket_0.date_purchased = 1.week.ago
+upcoming_ticket_0.save!
+
+upcoming_ticket_1 = Ticket.new
+upcoming_ticket_1.user_id = ella.id
+upcoming_ticket_1.event_id = event4.id
+upcoming_ticket_1.date_purchased = 2.days.ago
+upcoming_ticket_1.save!
+
+puts "#{ella.first_name} #{ella.last_name} | #{ella.email} Secret123 is ready for logging in."
+
 5.times do
   # Group the tickets from the past events...
   event0.group_tickets
   event1.group_tickets
   event2.group_tickets
 end
+
+puts "There are now #{Ticket.grouped.count} grouped tickets in the system."

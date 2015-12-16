@@ -11,6 +11,7 @@ The purpose of this app is to connect people with new acquaintances, based off o
 * rake db:reset
 * rails server
 * go to localhost:3000 (or whatever the console tells you)
+Note: rake db:reset will print a statement with an initialized login and user name... in the browser, go to users/sign_in and you're ready to explore from there! Looks like this <tt>"Ella Hayes | hayes.ella@example.com Secret123 is ready for logging in."</tt>
 
 == To run grouping mechanism:
 * rails console
