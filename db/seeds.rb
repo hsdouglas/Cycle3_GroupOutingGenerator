@@ -4,7 +4,8 @@ require 'faker'
 # ======= set up data for use by all factories ==========
 
 # Credit card types:
-credit_cards_array = [ "VISA", "DCCB", "AMEX", "DISC", "MC"]
+credit_card_names_array = [ "Personal", "Family", "Work"]
+credit_card_types_array = [ "VISA", "DCCB", "AMEX", "DISC", "MC"]
 
 # User photos:
 user_photos_array = [
@@ -207,8 +208,10 @@ event10.save!
 
 puts "There are now #{Event.count} events..."
 
-# Users:
 30.times do |user_number|
+
+  # =========================================
+  # Create 30 users
   user = User.new
   user.last_name = Faker::Name.last_name
   user.first_name = Faker::Name.first_name
@@ -221,12 +224,22 @@ puts "There are now #{Event.count} events..."
   user.birth_date = Faker::Date.between(30.years.ago, 15.years.ago)
   user.save!
 
-  credit_card = CreditCard.new
-  credit_card.name = "Personal"
-  credit_card.card_type = credit_cards_array.sample
-  credit_card.user_id = user.id
-  credit_card.save!
+  # =========================================
+  # Give each of those users two credit cards
+  credit_card_0 = CreditCard.new
+  credit_card_0.name = credit_card_names_array.sample
+  credit_card_0.card_type = credit_card_types_array.sample
+  credit_card_0.user_id = user.id
+  credit_card_0.save!
 
+  credit_card_1 = CreditCard.new
+  credit_card_1.name = credit_card_names_array.sample
+  credit_card_1.card_type = credit_card_types_array.sample
+  credit_card_1.user_id = user.id
+  credit_card_1.save!
+
+  # =========================================
+  # Give each of those users three tickets from past events
   past_ticket_0 = Ticket.new
   past_ticket_0.user_id = user.id
   past_ticket_0.event_id = event0.id
@@ -245,6 +258,8 @@ puts "There are now #{Event.count} events..."
   past_ticket_2.date_purchased = 3.weeks.ago
   past_ticket_2.save!
 
+  # =========================================
+  # Give each of those users two tickets from future events
   upcoming_ticket_0 = Ticket.new
   upcoming_ticket_0.user_id = user.id
   upcoming_ticket_0.event_id = event3.id
@@ -261,3 +276,9 @@ end
 puts "There are now #{User.count} users..."
 puts "and #{CreditCard.count} credit cards..."
 
+5.times do
+  # Group the tickets from the past events...
+  event0.group_tickets
+  event1.group_tickets
+  event2.group_tickets
+end

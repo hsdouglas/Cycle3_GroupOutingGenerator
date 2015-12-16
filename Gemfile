@@ -37,6 +37,7 @@ gem 'nested_form','0.3.2'
 gem 'faker', '~> 1.6', '>= 1.6.1'
 gem 'carrierwave'
 gem 'devise'
+gem 'whenever', :require => false
 
 gem 'normalize-rails'
 

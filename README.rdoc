@@ -8,20 +8,25 @@ The purpose of this app is to connect people with new acquaintances, based off o
 == Set Up:
 * git clone
 * bundle install
-* rake db:migrate
+* rake db:reset
 * rails server
 * go to localhost:3000 (or whatever the console tells you)
 
 == To run grouping mechanism:
 * rails console
-* create an event
-* create at least six tickets for that event
 * run <tt>Event.first.group_tickets</tt>
 
+== To add the cron job to your repo
+* in schedule.rb
+<tt>every 1.minute do
+	runner "Event.first.group"
+end</tt>
+
 == Goals by Wednesday:
-* Formatted events/1 page (show page)
-* Formatted My Current Group page (entirely new)
-* Formatted Accoutn page (users/1 show page)
+* Cron Job
+* Accounts
+* Confirmation pg after purchase
+* Pop-up when grouped
 
 == Add back in to users (removed for presentation 12/2)
 <div class="table-title">Contact</div>
