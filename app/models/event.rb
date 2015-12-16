@@ -6,6 +6,7 @@ class Event < ActiveRecord::Base
 	has_many :groups, through: :tickets
 
 	scope :chronological, -> { order('start') }
+	scope :upcoming, -> { where('start >= ?', Time.now)}
 
 	mount_uploader :poster, PhotoUploader
 
