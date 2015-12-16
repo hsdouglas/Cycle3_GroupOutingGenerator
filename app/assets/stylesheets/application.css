@@ -53,3 +53,18 @@ ul.user_lists {
 	list-style-type: none;
 }
 
+.tab_bar_navigation {
+	background: #ff2378;
+	padding: 10px;
+	bottom: 0;
+}
+
+.tab_bar_navigation .tab_bar_item {
+	display: inline;
+	padding: 0px 40px;
+}
+
+.tab_bar_navigation .tab_bar_item a img {
+
+}
+

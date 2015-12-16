@@ -13,7 +13,21 @@
 <%= yield %>
 
 </body>
-<% unless !user_signed_in? %>
-	<%= link_to current_user.first_name, user_path(current_user) %>
-<% end %>
+<footer>
+	<div class="tab_bar_navigation">
+		<div class="tab_bar_item">
+			<% unless !user_signed_in? %>
+				<%= link_to image_tag('ic_account_circle_white_24dp_2x.png'), user_path(current_user) %>
+			<% end %>
+		</div>
+		<div class="tab_bar_item">
+			<%= link_to image_tag('ic_insert_invitation_white_24dp_2x.png'), events_path %>
+		</div>
+		<div class="tab_bar_item">
+			<% unless !user_signed_in? %>
+				<%= link_to image_tag('ic_people_white_24dp_2x.png'), group_history_path(current_user) %>
+			<% end %>
+		</div>
+	</div>
+</footer>
 </html>
