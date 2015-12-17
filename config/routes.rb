@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   patch 'events/:id' => 'events#grouptickets', as: :grouptickets
 
   get 'users/:id/group_history' => 'users#group_history', as: :group_history
+  get 'users/:id/notifications' => 'users#notifications', as: :notifications
 
   root to: "events#index"
 

@@ -9,14 +9,12 @@ class User < ActiveRecord::Base
 
 	has_many :tickets
 	has_many :groups, through: :tickets
+	has_many :events, through: :tickets
 	has_many :credit_cards
 
 	mount_uploader :photo, PhotoUploader
 
-	# def upcoming(time)
-	# 	User.joins(tickets: [:event, :group]).where(events: ("start > ?", time))
-	# end
-
+	# This should be refactored into a scope that uses joins!
 	def get_groups
 		groups = []
 		self.tickets.each do |ticket|
@@ -25,15 +23,16 @@ class User < ActiveRecord::Base
 		groups
 	end
 
+	# This should be refactored into a scope that uses joins!
 	def get_past_groups
 		past_groups = []
 		self.tickets.grouped.past.each do |ticket|
-			# ticket.group.get_members
 			past_groups << ticket.group
 		end
 		past_groups
 	end
 
+	# This should be refactored into a scope that uses joins!
 	def get_upcoming_groups
 		upcoming_groups = []
 		self.tickets.grouped.upcoming.each do |ticket|
@@ -45,4 +44,13 @@ class User < ActiveRecord::Base
 	def anonymized_name
 		"#{first_name} #{last_name[0]}."
 	end
+
+	def get_received_group_notifications
+		self.tickets.received
+	end
+
+	def get_unreceived_group_notifications
+		self.tickets.not_received
+	end
+
 end

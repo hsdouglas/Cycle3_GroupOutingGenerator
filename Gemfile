@@ -37,6 +37,7 @@ gem 'nested_form','0.3.2'
 gem 'faker', '~> 1.6', '>= 1.6.1'
 gem 'carrierwave'
 gem 'devise'
+gem 'whenever', :require => false
 
 gem 'normalize-rails'
 
@@ -45,10 +46,23 @@ gem "jquery-slick-rails"
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
-
   # Access an IRB console on exception pages or by using <%= console %> in views
   gem 'web-console', '~> 2.0'
-
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
+end
+
+# Gems used only in testing
+group :test do
+  gem 'shoulda', '3.5.0'
+  gem 'shoulda-matchers', '2.7.0'
+  gem 'factory_girl_rails', '4.5.0'
+  gem 'mocha', '1.1.0', require: false
+  gem 'simplecov', '0.9.1'
+  gem 'single_test', '0.6.0'
+  gem 'cucumber-rails', require: false
+  gem 'database_cleaner'
+  gem 'launchy'
+  gem 'capybara'
+  gem 'minitest', '>= 5.8.3'
 end

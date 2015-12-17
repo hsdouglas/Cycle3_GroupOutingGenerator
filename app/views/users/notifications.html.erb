@@ -1,0 +1,10 @@
+<!--meta http-equiv="refresh" content="30" /-->
+<h1>Notifications</h1>
+
+<div class="table-title">You've Been Grouped!</div>
+<ul class="table">
+  <% @notifications_not_received.each do |notification| %>
+      <li><%= link_to notification.event.title, group_path(notification.group_id) %>
+      </li>
+  <% end %>
+</ul>

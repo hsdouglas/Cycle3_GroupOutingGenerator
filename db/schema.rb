@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151209185156) do
+ActiveRecord::Schema.define(version: 20151216181745) do
 
   create_table "credit_cards", force: :cascade do |t|
     t.string   "name"
@@ -52,8 +52,9 @@ ActiveRecord::Schema.define(version: 20151209185156) do
     t.integer  "user_id"
     t.date     "date_purchased"
     t.integer  "group_id"
-    t.datetime "created_at",     null: false
-    t.datetime "updated_at",     null: false
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+    t.boolean  "notification_received"
   end
 
   create_table "users", force: :cascade do |t|

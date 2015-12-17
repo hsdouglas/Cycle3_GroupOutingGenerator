@@ -8,6 +8,9 @@ Bundler.require(*Rails.groups)
 
 module GroupOutingGenerator
   class Application < Rails::Application
+
+    GROUP_MATCH_NOTIFICATION = "You're awesome!"
+    GROUP_MATCH_NOTIFICATION_SENT = false
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -22,5 +25,8 @@ module GroupOutingGenerator
 
     # Do not swallow errors in after_commit/after_rollback callbacks.
     config.active_record.raise_in_transactional_callbacks = true
+    config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+    config.secret_key = '6aeaed699a1fceaf77a8a3cd535e6ec76634dadd2565b35fdb5f9711b5810d68ce0b64065bd219b502e0edabed560ad4e205ddbb8feae56c2f11be70b9e3a7c8'
+
   end
 end

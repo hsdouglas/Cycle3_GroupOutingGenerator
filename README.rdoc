@@ -8,20 +8,24 @@ The purpose of this app is to connect people with new acquaintances, based off o
 == Set Up:
 * git clone
 * bundle install
-* rake db:migrate
+* rake db:reset
 * rails server
 * go to localhost:3000 (or whatever the console tells you)
+Note: rake db:reset will print a statement with an initialized login and user name... in the browser, go to users/sign_in and you're ready to explore from there! Looks like this <tt>"Ella Hayes | hayes.ella@example.com Secret123 is ready for logging in."</tt>
 
 == To run grouping mechanism:
 * rails console
-* create an event
-* create at least six tickets for that event
-* run <tt>Event.first.group_tickets</tt>
+* run <tt>rake group_tickets:group_every_event</tt>
+
+== To run grouping mechanism via the cronjob:
+* make sure you have the group_tickets.rake and schedule.rb files
+* On the command line: <tt>whenever --update-crontab</tt>, <tt>mail</tt> hit enter on most recent message to see if it worked, <tt>whenever --clear-crontab</tt> to stop the cronjob.
 
 == Goals by Wednesday:
-* Formatted events/1 page (show page)
-* Formatted My Current Group page (entirely new)
-* Formatted Accoutn page (users/1 show page)
+* Cron Job (x)
+* Accounts
+* Confirmation pg after purchase
+* Pop-up when grouped
 
 == Add back in to users (removed for presentation 12/2)
 <div class="table-title">Contact</div>

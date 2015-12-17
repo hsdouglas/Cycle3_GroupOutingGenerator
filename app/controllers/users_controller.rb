@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!
 
   # GET /users
   # GET /users.json
@@ -15,9 +16,14 @@ class UsersController < ApplicationController
   end
 
   def group_history
-    @user = User.find(params[:id])
+    @user = current_user
     @upcoming_groups = @user.get_upcoming_groups
     @past_groups = @user.get_past_groups
+  end
+
+  def notifications
+    @notifications_received = current_user.get_received_group_notifications
+    @notifications_not_received = current_user.get_unreceived_group_notifications
   end
 
   # GET /users/new
