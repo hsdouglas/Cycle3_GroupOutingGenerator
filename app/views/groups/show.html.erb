@@ -1,5 +1,3 @@
-<p id="notice"><%= notice %></p>
-
 <div class="header">
 	<% unless @group.tickets.first.event.poster_url.nil? %>
 	  <p><%= image_tag @group.tickets.first.event.poster_url, style: "max-width: 365px"  %></p>
@@ -24,5 +22,3 @@
   	</li>
   <% end %>
 </ul>
-
-
