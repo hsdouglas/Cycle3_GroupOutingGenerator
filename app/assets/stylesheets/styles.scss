@@ -4,7 +4,6 @@ html {
   line-height: 1.6;
 }
 
-
 .header {
 	text-align: center;
 }
@@ -261,4 +260,9 @@ ul.table {
       margin-top: -10px;
     }
   }
+}
+
+/* Add space to the bottom of the page so that the tab bar doesn't go off the screen */
+html {
+  padding-bottom: 100px;
 }
