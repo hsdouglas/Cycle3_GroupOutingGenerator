@@ -18,7 +18,7 @@
 
 function splitEvents(a) {
   var returnArray = [ [] ]
-  var currentDate = new Date(Date.now())
+  var currentDate = new Date(a[0].start)
   var returnArrayIndex = 0;
   $.each(a, function(index, value) {
     if(currentDate.getDay() != (new Date(value.start)).getDay()) {
@@ -33,7 +33,7 @@ function splitEvents(a) {
 
 function getLocationDetails(e) {
   details = ""
-  details += (new Date(e.start)).toTimeString()
+  details += (new Date(e.start)).toLocaleTimeString()
   details += " at "
   details += e.venue_title
   return details
@@ -86,16 +86,91 @@ function insertEventIndex(e, $location) {
 }
 
 
+function DaySwitcher(events, $eventsContainer) {
+  this.events = events
+  this.$eventsContainer = $eventsContainer
+  this.currentDay = 0
+
+  self = this
+
+  this.nextDayExists = function() {
+    if(self.events.length > self.currentDay + 1) {
+      return true
+    }
+    return false
+  }
+
+  this.previousDayExists = function() {
+    if(0 <= self.currentDay - 1) {
+      return true
+    }
+    return false
+  }
+
+  this.nextDay = function() {
+    if(self.nextDayExists()) {
+      self.currentDay += 1
+      self.renderDay()
+      return true
+    }
+    return false
+  }
+
+  this.previousDay = function() {
+    if(self.previousDayExists()) {
+      self.currentDay -= 1
+      self.renderDay()
+      return true
+    }
+    return false
+  }
+
+  this.eventsHeader = function() {
+    var $eventsHeader = $("<div>").addClass("events-header")
+    $eventsHeader.append($("<a href='#'><</a>")
+                           .addClass("events-previous")
+                           .click(self.previousDay)
+                        )
+
+    $eventsHeader.append($("<div>")
+                           .addClass("events-date")
+                           .text(new Date(self.events[self.currentDay][0].start).toDateString())
+                         )
+
+    $eventsHeader.append($("<a href='#'>></a>")
+                           .addClass("events-next")
+                           .click(self.nextDay)
+                        )
+    return $eventsHeader
+  }
+
+  this.eventsList = function() {
+    var $eventsList = $("<div>").addClass("events-list")
+    $.each(self.events[self.currentDay], function(index, event) {
+      $eventsList.append(makeEvent(event))
+    } )
+    return $eventsList
+  }
+
+  this.renderDay = function() {
+    $eventsContainer.empty()
+    $eventsContainer.append(self.eventsHeader())
+    $eventsContainer.append(self.eventsList())
+  }
+
+  this.renderDay()
+}
+
 
 $(document).ready(function() {
   $events = $("#events-index")
-  console.log($events)
 
   if($events !== null) {
     var events_data = $('#events').data('events')
     events = splitEvents(events_data)
-    console.log(makeEvent(events[1][0]))
+
+    console.log(events)
     $events.empty();
-    insertEventIndex(events, $events)
+    var switcher = new DaySwitcher(events, $events)
   }
 })
