@@ -13,6 +13,7 @@
  *= require normalize-rails
  *= require_self
  *= require_tree .
+ *= require slick
  */
 @import "base/mixins.scss";
 @import "base/normalize.scss";
@@ -52,4 +53,3 @@ ul.group_members li img {
 ul.user_lists {
 	list-style-type: none;
 }
-

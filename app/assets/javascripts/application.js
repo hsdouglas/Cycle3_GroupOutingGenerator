@@ -13,6 +13,7 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require jquery.slick
 //= require_tree .
 
 
@@ -149,6 +150,10 @@ function DaySwitcher(events, $eventsContainer) {
     $.each(self.events[self.currentDay], function(index, event) {
       $eventsList.append(makeEvent(event))
     } )
+    window.setTimeout(function() {
+      console.log("hello")
+      $(".events-list").slick()
+    }, 0)
     return $eventsList
   }
 
