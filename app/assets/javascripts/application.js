@@ -17,11 +17,12 @@
 //= require_tree .
 
 
-function splitEvents(a) {
+function splitEvents(events, attendance) {
   var returnArray = [ [] ]
-  var currentDate = new Date(a[0].start)
+  var currentDate = new Date(events[0].start)
   var returnArrayIndex = 0;
-  $.each(a, function(index, value) {
+  $.each(events, function(index, value) {
+    value.attendance = attendance[index]
     if(currentDate.getDay() != (new Date(value.start)).getDay()) {
       currentDate = new Date(value.start)
       returnArray.push([])
@@ -41,11 +42,11 @@ function getLocationDetails(e) {
 }
 
 function getAttendanceDetails(e) {
-  if(e.purchased_tickets === 1) {
+  if(e.attendance === 1) {
     return "There is currently 1 person attending"
   }
   else {
-    return "There are currently " + e.purchased_tickets + " people attending"
+    return "There are currently " + e.attendance + " people attending"
   }
 }
 
@@ -177,8 +178,11 @@ function DaySwitcher(events, $eventsContainer) {
 function loadEventsIndex() {
   var $events = $("#events-index")
   var events_data = $('#events').data('events')
+  var events_attendance = $('#events').data('eventsattendance')
+
+  console.log(events_attendance)
   if(events_data != undefined) {
-    events = splitEvents(events_data)
+    events = splitEvents(events_data, events_attendance)
     $events.empty();
     var switcher = new DaySwitcher(events, $events)
   }

@@ -5,6 +5,11 @@ class EventsController < ApplicationController
   # GET /events.json
   def index
     @events = Event.chronological.all
+    @events_attendance = Array.new(@events.length)
+
+    @events_attendance = @events.map do |event|
+      event.purchased_tickets
+    end
   end
 
   # GET /events/1
@@ -84,7 +89,7 @@ class EventsController < ApplicationController
     if tickets.count % 6 == 0
       newest = Group.new(title: "#{self.title} Group")
       newest.save!
-      
+
       tickets.each do |ticket|
         ticket.group = newest
         ticket.save!

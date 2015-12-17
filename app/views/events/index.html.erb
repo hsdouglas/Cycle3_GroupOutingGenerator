@@ -1,10 +1,8 @@
-<%= content_tag "div", id: "events", data: {events: @events} do %>
+<%= content_tag "div", id: "events", data: {events: @events, eventsAttendance: @events_attendance} do %>
 <% end %>
 
 <div id="events-index" class="events-index">
 </div>
-
-
 
 <script>
   loadEventsIndex();
