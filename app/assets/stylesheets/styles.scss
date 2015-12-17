@@ -190,6 +190,23 @@ ul.table {
   padding-bottom: 8 * $gutter;
 }
 
+.cta-container {
+  text-align: center;
+  .cta-button {
+    background-color: white;
+    border: 2px solid $color-active;
+    padding: 5px 20px;
+    font-weight: 600;
+    margin: 20px;
+
+    color: $color-active;
+    border-radius: 10000px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
 
 
 .cell {
