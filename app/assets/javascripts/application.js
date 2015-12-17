@@ -50,7 +50,9 @@ function getAttendanceDetails(e) {
 }
 
 function makeEvent(e) {
-  $event = $("<div>").addClass("event")
+  var eventURL = "/events/" + e.id
+  $event = $("<a>").addClass("event")
+                   .attr({href:eventURL})
   $event.append($("<div>")
         .addClass("event-image")
         .append($("<img/>", {src: e.poster.url})))
@@ -58,6 +60,7 @@ function makeEvent(e) {
   $event.append($("<div>")
         .addClass("event-title")
         .text(e.title))
+
   $event.append($("<div>")
         .addClass("event-location")
         .text(getLocationDetails(e)))
@@ -67,7 +70,7 @@ function makeEvent(e) {
         .text(getAttendanceDetails(e)))
 
 
-  var a = "<div class='cta-container'><button class='cta-button' onclick='showSomething()'>I want to go!</button></div>"
+  var a = "<div class='cta-container'><button class='cta-button'>More information</button></div>"
   $event.append($(a))
 
   return $event
