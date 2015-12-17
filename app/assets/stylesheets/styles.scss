@@ -58,6 +58,12 @@ $gray-light: #cdcdcd;
 $gutter: 8px;
 
 
+a, a:visited, a:hover, a:active {
+  color: $color-text-secondary;
+  text-decoration: none;
+}
+
+
 .navigation-links {
   height: 30px;
   position: relative;
@@ -68,8 +74,6 @@ $gutter: 8px;
 
   a, a:visited, a:hover, a:active {
     color: $color-text-white;
-    background: none;
-    cursor: pointer;
     text-decoration: none;
   }
 
