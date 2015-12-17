@@ -62,6 +62,11 @@ $gutter: 8px;
 @import 'slick-theme';
 
 
+
+h1 {
+  color: $color-text;
+  margin: $gutter;
+}
 a, a:visited, a:hover, a:active {
   color: $color-text-secondary;
   text-decoration: none;
