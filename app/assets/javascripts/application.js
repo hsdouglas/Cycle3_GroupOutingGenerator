@@ -58,7 +58,6 @@ function makeEvent(e) {
   $event.append($("<div>")
         .addClass("event-title")
         .text(e.title))
-
   $event.append($("<div>")
         .addClass("event-location")
         .text(getLocationDetails(e)))
@@ -66,6 +65,10 @@ function makeEvent(e) {
   $event.append($("<div>")
         .addClass("event-attendance")
         .text(getAttendanceDetails(e)))
+
+
+  var a = "<div class='cta-container'><button class='cta-button' onclick='showSomething()'>I want to go!</button></div>"
+  $event.append($(a))
 
   return $event
 }
@@ -151,8 +154,7 @@ function DaySwitcher(events, $eventsContainer) {
       $eventsList.append(makeEvent(event))
     } )
     window.setTimeout(function() {
-      console.log("hello")
-      $(".events-list").slick()
+      $(".events-list").slick({infinite: false})
     }, 0)
     return $eventsList
   }
@@ -167,15 +169,14 @@ function DaySwitcher(events, $eventsContainer) {
 }
 
 
-$(document).ready(function() {
-  $events = $("#events-index")
 
-  if($events !== null) {
-    var events_data = $('#events').data('events')
+
+function loadEventsIndex() {
+  var $events = $("#events-index")
+  var events_data = $('#events').data('events')
+  if(events_data != undefined) {
     events = splitEvents(events_data)
-
-    console.log(events)
     $events.empty();
     var switcher = new DaySwitcher(events, $events)
   }
-})
+}

@@ -2,6 +2,7 @@ html {
   font-family: "proxima-nova";
   font-size: 16px;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 .header {
@@ -56,6 +57,9 @@ $border-radius-small: 3px;
 $gray-light: #cdcdcd;
 
 $gutter: 8px;
+
+@import 'slick';
+@import 'slick-theme';
 
 
 a, a:visited, a:hover, a:active {
@@ -239,16 +243,35 @@ ul.table {
   .event {
     border-top: 40px solid $color-brand;
   }
+
+
+
+  .slick-slide{
+    outline: none;
+  }
 }
 
-.events-date {
-  background-color: $color-brand;
-  font-weight: 600;
-  color: $color-text-white;
-  font-size: 24px;
-  padding: $gutter;
-}
+.events-header {
+    background-color: $color-brand;
+    font-weight: 600;
+    color: $color-text-white;
+    font-size: 24px;
+    padding: $gutter;
 
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+
+    .events-previous, .events-next, .events-date {
+      color: $color-text-white;
+    }
+
+
+    .event-image {
+      margin-top: 0px;
+    }
+}
 
 
 
