@@ -5,6 +5,42 @@ html {
 }
 
 
+.header {
+	text-align: center;
+}
+
+
+
+ul.group_members {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+ul.group_members li {
+	list-style-type: none;
+	float: left;
+	width: 33%;
+	padding: 30px;
+}
+
+ul.group_members li img {
+	border-radius: 50%;
+	height: 75px;
+	width: 75px;
+	padding: 3px;
+	border: 1px solid black;
+}
+
+.bottom_links {
+	width: 100%;
+}
+
+ul.user_lists {
+	list-style-type: none;
+}
+
+
 $color-brand: #ff2378;
 $color-brand-dark: #b20045;
 $color-new: #ffed3c;
@@ -202,46 +238,27 @@ ul.table {
   Tab Bar
   ======================
 */
-.header {
-	text-align: center;
-}
+.tab-bar-navigation {
+	background-color: $color-brand;
+  color: $color-text-white;
+  padding: $gutter;
 
-ul.group_members {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-}
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
 
-ul.group_members li {
-	list-style-type: none;
-	float: left;
-	width: 33%;
-	padding: 30px;
-}
+  display: flex;
+  justify-content: space-around;
 
-ul.group_members li img {
-	border-radius: 50%;
-	height: 75px;
-	width: 75px;
-	padding: 3px;
-	border: 1px solid black;
-}
+  .tab-bar-item {
+  	display: inline;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
 
-.bottom_links {
-	width: 100%;
-}
-
-ul.user_lists {
-	list-style-type: none;
-}
-
-.tab_bar_navigation {
-	background: #ff2378;
-	padding: 10px;
-	bottom: 0;
-}
-
-.tab_bar_navigation .tab_bar_item {
-	display: inline;
-	padding: 0px 25px;
+    label {
+      margin-top: -10px;
+    }
+  }
 }

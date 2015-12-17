@@ -14,30 +14,46 @@
 <%= yield %>
 
 </body>
+
 <footer>
-	<div class="tab_bar_navigation">
-		<div class="tab_bar_item">
-			<% unless !user_signed_in? %>
-				<%= link_to image_tag('ic_account_circle_white_24dp_2x.png'), user_path(current_user) %>
-			<% end %>
-		</div>
-		<div class="tab_bar_item">
+	<div class="tab-bar-navigation">
+
+		<% unless !user_signed_in? %>
+  		<div class="tab-bar-item">
+  				<%= link_to image_tag('ic_account_circle_white_24dp_2x.png'), user_path(current_user) %>
+          <label>
+            Profile
+          </label>
+  		</div>
+    <% end %>
+		<div class="tab-bar-item">
 			<%= link_to image_tag('ic_insert_invitation_white_24dp_2x.png'), events_path %>
+      <label>
+        Events
+      </label>
 		</div>
-		<div class="tab_bar_item">
-			<% unless !user_signed_in? %>
-				<%= link_to image_tag('ic_people_white_24dp_2x.png'), group_history_path(current_user) %>
-			<% end %>
-		</div>
-		<div class="tab_bar_item">
-			<% unless !user_signed_in? %>
+
+		<% unless !user_signed_in? %>
+		  <div class="tab-bar-item">
+  			<%= link_to image_tag('ic_people_white_24dp_2x.png'), group_history_path(current_user) %>
+        <label>
+          Groups
+        </label>
+  		</div>
+    <% end %>
+
+		<% unless !user_signed_in? %>
+  		<div class="tab-bar-item">
 				<% if current_user.get_unreceived_group_notifications.length != 0 %>
 			    	<%= link_to image_tag('ic_notifications_active_white_24dp_2x.png'), notifications_path(current_user) %>
 				<% else %>
 					<%= link_to image_tag('ic_notifications_white_24dp_2x.png'), notifications_path(current_user) %>
 				<% end %>
-			<% end %>
-		</div>
+        <label>
+          Notifications
+        </label>
+  		</div>
+    <% end %>
 	</div>
 </footer>
 </html>
