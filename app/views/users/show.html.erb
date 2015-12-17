@@ -8,8 +8,8 @@
 </div>
 
 <% unless @user.photo_url.nil? %>
-  <div class='user-image'>
-    <%= image_tag @user.photo_url, style: "max-width: 200px"  %>
+  <div class='user-image-container'>
+    <div class="user-image" style="background-image:url(<%= @user.photo_url %>)"></div>
   </div>
 <% end %>
 </div>
@@ -22,7 +22,7 @@
   <%= @user.bio %>
 </div>
 
-<div class="table-title">Purchase History</div>
+<div class="table-title">Events</div>
 <ul class="table">
   <% @tickets.each do |ticket| %>
       <li><%= link_to ticket.event.title, event_path(ticket.event_id) %></li>
