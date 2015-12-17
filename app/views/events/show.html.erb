@@ -21,11 +21,11 @@
 </div>
 
 <div class='cta-container'>
-  <button class="cta-button" onclick="showSomething()">I want to go!</button>
+  <button class="cta-button" onclick="showPaymentModal()">I want to go!</button>
 </div>
 
-<dialog id="something">
-  <h3>Choose Payment Mechanism</h3>
+<dialog id="payment-modal">
+  <h3>Choose your card</h3>
   <select name="user[credit_card_id]">
     <option value="" selected="selected">Please select</option>
     <option value="1"><%= current_user.credit_cards.first.name %> <%= current_user.credit_cards.first.card_type %></option>
@@ -38,8 +38,9 @@
     <%= f.hidden_field :event_id, value: @event.id %>
     <%= f.hidden_field :date_purchased, value: Date.today %>
     <%= f.button :submit, "Buy My Ticket", {class: "round tagalong-button fix-button"} %>
+
+    <button onclick="hidePaymentModal()">Cancel</button>
   <% end %>
-  <button onclick="hideSomething()">Cancel</button>
 </dialog>
 
 <div class="cell">

@@ -17,6 +17,14 @@
 //= require_tree .
 
 
+function showPaymentModal() {
+  document.getElementById("payment-modal").showModal();
+}
+
+function hidePaymentModal() {
+	document.getElementById("payment-modal").close();
+}
+
 function splitEvents(events, attendance) {
   var returnArray = [ [] ]
   var currentDate = new Date(events[0].start)

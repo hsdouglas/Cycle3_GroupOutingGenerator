@@ -308,3 +308,31 @@ html {
     }
   }
 }
+
+#payment-modal {
+  border-radius: 12px;
+  border: 0px;
+  box-shadow: 0px 0px 0px 500000px rgba(200,200,200,0.9);
+  border: 1px solid #fafafa;
+  max-width: 80%;
+  padding: $gutter * 2;
+  h3 {
+    margin: 0;
+    margin-bottom: $gutter;
+    padding: 0;
+    color: $color-text-secondary;
+  }
+
+  button, input {
+    color: $color-active;
+    background-color: white;
+    border: 2px solid $color-active;
+    border-radius: 1000px;
+    padding: 5px 20px;
+    font-weight: 600;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
