@@ -1,28 +1,47 @@
-<p id="notice"><%= notice %></p>
-
-<div class="header">
-	<% unless @group.tickets.first.event.poster_url.nil? %>
-	  <p><%= image_tag @group.tickets.first.event.poster_url, style: "max-width: 365px"  %></p>
-	<% end %>
-	<h2><%= @group.title %></h2>
-  <p><%= @group.tickets.first.event.description %></p>
-	<h4><%= @group.tickets.first.event.start.strftime("on %m/%d/%Y at %I:%M%p")%></h4>
+<div class="navigation-links">
+  <div class="right-link">
+    <%= link_to 'Edit', edit_event_path(@group) %>
+  </div>
 </div>
 
-<hr>
-<h2>Who's Going?</h2>
-<ul class="group_members">
-  <% @group.tickets.each do |ticket| %>
-  	<li>
-  		<% unless ticket.user.photo_url.nil? %><%= image_tag ticket.user.photo_url %><% end %><br>
-      <% if ticket.user != current_user %>
-  		  <strong><%= ticket.user.first_name %> <%= ticket.user.last_name %></strong>
-        <br><%= ticket.user.bio %>
-      <% else %>
-        <strong>Me</strong>
-      <% end %>
-  	</li>
-  <% end %>
-</ul>
 
+<% unless @group.tickets.first.event.poster_url.nil? %>
+  <div class="event-image"><%= image_tag @group.tickets.first.event.poster_url %></div>
+<% end %>
 
+<div class="event-title"><%= @group.title %></div>
+<div class="event-details"><%= @group.tickets.first.event.start.strftime("%m/%d/%Y at %I:%M%p") %> at <%= @group.tickets.first.event.venue_title %></div>
+
+<div class="cell">
+	<div class="cell-title">Who's Going?</div>
+	<div class="group-members">
+	  <% @group.tickets.each do |ticket| %>
+			<a class="group-member" href="/users/<%= ticket.user.id %>">
+	  		<% unless ticket.user.photo_url.nil? %>
+					<div class='group-member-photo'>
+						<div class="user-image" style="background-image:url(<%= ticket.user.photo_url %>)"></div>
+					</div>
+				<% end %>
+				<div class="group-member-name">
+		  		<%= ticket.user.anonymized_name %>
+				</div>
+			</a>
+	  <% end %>
+	</div>
+</div>
+
+<div class="cell">
+  <div class="cell-title">Description</div>
+  <div class="cell-content">
+    <%= @group.tickets.first.event.description %>
+  </div>
+</div>
+
+<div class="cell">
+  <div class="cell-title">Address</div>
+  <div class="cell-content">
+    <%= @group.tickets.first.event.address_1 %>
+    <%= @group.tickets.first.event.address_2 %><br>
+    <%= @group.tickets.first.event.city %>, <%= @group.tickets.first.event.state %> <%= @group.tickets.first.event.zip %>
+  </div>
+</div>

@@ -84,7 +84,7 @@ event0 = Event.new
 event0.remote_poster_url = "https://img.evbuc.com/https%3A%2F%2Fimg.evbuc.com%2Fhttps%253A%252F%252Fcdn.evbuc.com%252Fimages%252F14973785%252F149726331731%252F1%252Foriginal.jpg%3Frect%3D0%252C67%252C400%252C200%26s%3D27186e07bfc18eed0427f0b30de49d07?w=1000&s=0c5ac13545e8dda31734162b3db5a3d5"
 event0.title = events_hash.keys[0]
 event0.description = events_hash.values[0]
-event0.start = Time.new(2015, 12, 9, 15, 0, 0)
+event0.start = Time.new(2015, 12, 10, 15, 0, 0)
 event0.price = Faker::Commerce.price
 event0.venue_title = Faker::Company.name
 event0.address_1 = Faker::Address.street_address
@@ -97,7 +97,7 @@ event1 = Event.new
 event1.remote_poster_url = "https://img.evbuc.com/https%3A%2F%2Fimg.evbuc.com%2Fhttps%253A%252F%252Fcdn.evbuc.com%252Fimages%252F17156901%252F114219547983%252F1%252Foriginal.jpg%3Frect%3D127%252C0%252C770%252C385%26s%3Dd1315cfac44c58142846df0e51c27a80?w=1000&s=10cad570065c5d1a60e849ad781b5808"
 event1.title = events_hash.keys[1]
 event1.description = events_hash.values[1]
-event1.start = Time.new(2015, 12, 12, 14, 0, 0)
+event1.start = Time.new(2015, 12, 17, 14, 0, 0)
 event1.price = Faker::Commerce.price
 event1.venue_title = Faker::Company.name
 event1.address_1 = Faker::Address.street_address
@@ -123,7 +123,7 @@ event3 = Event.new
 event3.remote_poster_url = "https://sportsblogmovement.files.wordpress.com/2013/05/bruins-penguins-away.jpg"
 event3.title = events_hash.keys[3]
 event3.description = events_hash.values[3]
-event3.start = Time.new(2015, 12, 18, 14, 0, 0)
+event3.start = Time.new(2015, 12, 17, 14, 0, 0)
 event3.price = Faker::Commerce.price
 event3.venue_title = Faker::Company.name
 event3.address_1 = Faker::Address.street_address

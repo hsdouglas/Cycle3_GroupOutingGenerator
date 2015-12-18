@@ -1,15 +1,9 @@
 <h1>My Groups</h1>
 
-<div class="navigation-links">
-  <div class="left-link">
-    <%= link_to 'Back to My Profile', user_path(current_user) %>
-  </div>
-</div>
-
 <div class="table-title">Coming Soon</div>
 <ul class="table">
   <% @upcoming_groups.each do |group| %>
-  <!-- should be all upcoming events --> 
+  <!-- should be all upcoming events -->
       <li><%= link_to group.title, group_path(group) %></li>
   <% end %>
 </ul>
@@ -17,7 +11,7 @@
 <div class="table-title">Past</div>
 <ul class="table">
   <% @past_groups.each do |group| %>
-  <!-- should be all past events --> 
+  <!-- should be all past events -->
       <li><%= link_to group.title, group_path(group) %></li>
   <% end %>
 </ul>

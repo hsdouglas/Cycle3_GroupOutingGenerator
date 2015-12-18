@@ -1,18 +1,12 @@
-<p id="notice"><%= notice %></p>
-
-
 <div class="navigation-links">
   <div class="right-link">
     <%= link_to 'Edit', edit_user_path(@user) %>
   </div>
-  <div class="left-link">
-    <%= link_to 'Back', users_path %>
-  </div>
 </div>
 
 <% unless @user.photo_url.nil? %>
-  <div class='user-image'>
-    <%= image_tag @user.photo_url, style: "max-width: 200px"  %>
+  <div class='user-image-container'>
+    <div class="user-image" style="background-image:url(<%= @user.photo_url %>)"></div>
   </div>
 <% end %>
 </div>
@@ -25,11 +19,9 @@
   <%= @user.bio %>
 </div>
 
-<div class="table-title">Purchase History</div>
+<div class="table-title">Events</div>
 <ul class="table">
   <% @tickets.each do |ticket| %>
       <li><%= link_to ticket.event.title, event_path(ticket.event_id) %></li>
   <% end %>
 </ul>
-
-<div class="table-title"><%= link_to 'Click here to view your groups!', group_history_path(@user) %></div>

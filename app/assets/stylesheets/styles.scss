@@ -2,6 +2,7 @@ html {
   font-family: "proxima-nova";
   font-size: 16px;
   line-height: 1.6;
+  overflow-x: hidden;
 }
 
 
@@ -22,6 +23,20 @@ $gray-light: #cdcdcd;
 
 $gutter: 8px;
 
+@import 'slick';
+@import 'slick-theme';
+
+
+
+h1 {
+  color: $color-text;
+  margin: $gutter;
+}
+a, a:visited, a:hover, a:active {
+  color: $color-text-secondary;
+  text-decoration: none;
+}
+
 
 .navigation-links {
   height: 30px;
@@ -33,8 +48,6 @@ $gutter: 8px;
 
   a, a:visited, a:hover, a:active {
     color: $color-text-white;
-    background: none;
-    cursor: pointer;
     text-decoration: none;
   }
 
@@ -110,13 +123,28 @@ ul.table {
 }
 
 
-.event-image, .user-image {
+.event-image, .user-image-container {
   text-align: center;
   margin-top: -30px;
   z-index: 1000000;
   position: relative;
-  img {
+  img, .user-image {
     box-shadow: 0px 3px 35px rgba(0,0,0,0.3);
+    margin:auto;
+    background-size: cover;
+  }
+
+  .user-image {
+    border-radius: 10000px;
+    border: 4px solid white;
+    width: 180px;
+    height: 180px;
+  }
+
+  &.event-image img {
+    max-width: 50%;
+    min-width: 250px;
+    max-height: 260px;
   }
 }
 
@@ -127,8 +155,6 @@ ul.table {
   ======================
 */
 
-
-
 .event-attendance, .event-location {
   margin: $gutter;
   text-align: center;
@@ -138,6 +164,23 @@ ul.table {
   padding-bottom: 8 * $gutter;
 }
 
+.cta-container {
+  text-align: center;
+  .cta-button {
+    background-color: white;
+    border: 2px solid $color-active;
+    padding: 5px 20px;
+    font-weight: 600;
+    margin: 20px;
+
+    color: $color-active;
+    border-radius: 10000px;
+
+    &:focus {
+      outline: none;
+    }
+  }
+}
 
 
 .cell {
@@ -160,19 +203,6 @@ ul.table {
 
 }
 
-/*
-  ======================
-  Users
-  ======================
-*/
-
-
-.user-image {
-  img {
-    border-radius: 10000px;
-    border: 2px solid white;
-  }
-}
 
 /*
   ======================
@@ -183,12 +213,126 @@ ul.table {
   .event {
     border-top: 40px solid $color-brand;
   }
+
+
+
+  .slick-slide{
+    outline: none;
+  }
 }
 
-.events-date {
-  background-color: $color-brand;
-  font-weight: 600;
+.events-header {
+    background-color: $color-brand;
+    font-weight: 600;
+    color: $color-text-white;
+    font-size: 24px;
+    padding: $gutter;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+
+    .events-previous, .events-next, .events-date {
+      color: $color-text-white;
+    }
+
+
+    .event-image {
+      margin-top: 0px;
+    }
+}
+
+
+
+/*
+  ======================
+  Tab Bar
+  ======================
+*/
+
+.tab-bar-navigation {
+	background-color: $color-brand;
   color: $color-text-white;
-  font-size: 24px;
   padding: $gutter;
+
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+
+  display: flex;
+  justify-content: space-around;
+
+  .tab-bar-item {
+  	display: inline;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+
+    label {
+      margin-top: -10px;
+    }
+  }
+}
+
+/* Add space to the bottom of the page so that the tab bar doesn't go off the screen */
+html {
+  padding-bottom: 100px;
+}
+
+
+
+
+/*
+  ======================
+  Groups Page
+  ======================
+*/
+.group-members {
+  display: flex;
+  flex-flow: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+
+  .group-member {
+    text-align: center;
+    margin: 10px;
+    .user-image {
+      width: 90px;
+      height: 90px;
+      background-size: cover;
+      border: 2px solid white;
+      border-radius: 10000px;
+      box-shadow: 0px 1px 15px rgba(0,0,0,0.3);
+    }
+  }
+}
+
+#payment-modal {
+  border-radius: 12px;
+  border: 0px;
+  box-shadow: 0px 0px 0px 500000px rgba(200,200,200,0.9);
+  border: 1px solid #fafafa;
+  max-width: 80%;
+  padding: $gutter * 2;
+  h3 {
+    margin: 0;
+    margin-bottom: $gutter;
+    padding: 0;
+    color: $color-text-secondary;
+  }
+
+  button, input {
+    color: $color-active;
+    background-color: white;
+    border: 2px solid $color-active;
+    border-radius: 1000px;
+    padding: 5px 20px;
+    font-weight: 600;
+
+    &:focus {
+      outline: none;
+    }
+  }
 }
