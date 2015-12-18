@@ -1,17 +1,27 @@
 <h1>My Groups</h1>
 
-<div class="table-title">Coming Soon</div>
-<ul class="table">
-  <% @upcoming_groups.each do |group| %>
-  <!-- should be all upcoming events -->
-      <li><%= link_to group.title, group_path(group) %></li>
-  <% end %>
-</ul>
+<% unless @upcoming_groups.empty? %>
+	<div class="table-title">Coming Soon</div>
+	<ul class="table">
+	  <% @upcoming_groups.each do |group| %>
+	  <!-- should be all upcoming events -->
+	      <li><%= link_to group.title, group_path(group) %></li>
+	  <% end %>
+	</ul>
+<% end %>
 
-<div class="table-title">Past</div>
-<ul class="table">
-  <% @past_groups.each do |group| %>
-  <!-- should be all past events -->
-      <li><%= link_to group.title, group_path(group) %></li>
-  <% end %>
-</ul>
+<% unless @past_groups.empty? %>
+	<div class="table-title">Past</div>
+	<ul class="table">
+	  <% @past_groups.each do |group| %>
+	  <!-- should be all past events -->
+	      <li><%= link_to group.title, group_path(group) %></li>
+	  <% end %>
+	</ul>
+<% end %>
+
+<% if @upcoming_groups.empty? && @past_groups.empty? %>
+	<p style="padding-left: 10px;">
+		You are not currently placed in any groups. Try purchasing a ticket to any of our <%= link_to 'awesome events ', event_path %>to get grouped!
+	</p>
+<% end %>

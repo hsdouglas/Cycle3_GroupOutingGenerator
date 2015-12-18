@@ -26,6 +26,20 @@ class UsersController < ApplicationController
     @notifications_not_received = current_user.get_unreceived_group_notifications
   end
 
+  # A simple form that is submitted through AJAX.
+  def markasreceived
+    @ticket = Ticket.find(params[:id])
+    if @ticket.valid?
+      @ticket.update_attribute(:notification_received, true)
+      @ticket.save!
+      # this will have to change to credit card functionality later
+      redirect_to notifications_url, notice: 'You have read this notification.'
+      # redirect to my groups url (when logged in!)
+    else
+      format.json { render json: @ticket.errors, status: :unprocessable_entity }
+    end
+  end
+
   # GET /users/new
   def new
     @user = User.new
@@ -84,5 +98,9 @@ class UsersController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def user_params
       params.require(:user).permit(:first_name, :last_name, :birth_date, :bio, :phone, :email, :photo)
+    end
+
+    def ticket_params
+      params.require(:ticket).permit(:event_id, :user_id, :date_purchased, :notification_received)
     end
 end

@@ -1,10 +1,22 @@
 <!--meta http-equiv="refresh" content="30" /-->
 <h1>Notifications</h1>
 
+<% if !@notifications_not_received.empty? %>
 <div class="table-title">You've Been Grouped!</div>
 <ul class="table">
   <% @notifications_not_received.each do |notification| %>
-      <li><%= link_to notification.event.title, group_path(notification.group_id) %>
-      </li>
+      <li>
+	      <%= link_to notification.event.title, group_path(notification.group_id) %>
+	      <div style="background: #0f95b2; width: 120px; padding: 5px;">
+		  	<%= link_to 'Mark as Read', markasreceived_path(notification), notification_received: true, method: :patch, :style => "color: white;" %>
+		  	<%= image_tag 'ic_check_circle_white_24dp_2x.png', :style => "max-width: 20px;" %>
+		  </div>
+	  </li>
   <% end %>
 </ul>
+<% else %>
+	<p style="padding-left: 10px;">
+		No new notifications.<br>
+		View <%= link_to 'your groups', group_history_path(current_user) %> to see your upcoming outings!
+	</p>
+<% end %>

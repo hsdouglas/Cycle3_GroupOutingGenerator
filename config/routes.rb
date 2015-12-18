@@ -11,6 +11,7 @@ Rails.application.routes.draw do
 
   get 'users/:id/group_history' => 'users#group_history', as: :group_history
   get 'users/:id/notifications' => 'users#notifications', as: :notifications
+  patch 'users/:id/markasreceived' => 'users#markasreceived', as: :markasreceived
 
   root to: "events#index"
 

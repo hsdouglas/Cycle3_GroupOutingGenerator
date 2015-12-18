@@ -19,7 +19,7 @@
 
 # runner "Event.first.group_tickets", environment: :development
 
-every 2.minutes do
+every 1.minute do
 	rake "group_tickets:group_every_event", environment: :development	
 end
 

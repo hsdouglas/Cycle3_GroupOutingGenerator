@@ -29,7 +29,7 @@ user_photos_array = [
       "https://s-media-cache-ak0.pinimg.com/236x/2a/58/dd/2a58ddbe125f98c2af3d2b800792582a.jpg",
       "http://wcct.com/wp-content/uploads/2012/10/Korean-Man-000011341022Large.jpg",
       "http://cdn.stylisheve.com/wp-content/uploads/2012/01/Korean-Hairstyles-for-women_02.jpg",
-      "http://www.castervision.com/wp-content/uploads/2015/05/Man-Smiling-after-surgery.jpg",
+      "http://whodares2.com/files/headshots/photo.jpg",
       "http://srkheadshotday.com/wp-content/uploads/Danielle_Lussier_Q4332_Crop32.jpg",
       "http://alpharenew.com/wp-content/uploads/2015/02/hair-supplement-for-growth.jpg",
       "http://www.diyhealth.com/wp-content/uploads/2012/07/smiling_image_title_tuemm.jpg",
@@ -84,7 +84,7 @@ event0 = Event.new
 event0.remote_poster_url = "https://img.evbuc.com/https%3A%2F%2Fimg.evbuc.com%2Fhttps%253A%252F%252Fcdn.evbuc.com%252Fimages%252F14973785%252F149726331731%252F1%252Foriginal.jpg%3Frect%3D0%252C67%252C400%252C200%26s%3D27186e07bfc18eed0427f0b30de49d07?w=1000&s=0c5ac13545e8dda31734162b3db5a3d5"
 event0.title = events_hash.keys[0]
 event0.description = events_hash.values[0]
-event0.start = Time.new(2015, 12, 10, 15, 0, 0)
+event0.start = Time.new(2015, 12, 19, 15, 0, 0)
 event0.price = Faker::Commerce.price
 event0.venue_title = Faker::Company.name
 event0.address_1 = Faker::Address.street_address
@@ -97,7 +97,7 @@ event1 = Event.new
 event1.remote_poster_url = "https://img.evbuc.com/https%3A%2F%2Fimg.evbuc.com%2Fhttps%253A%252F%252Fcdn.evbuc.com%252Fimages%252F17156901%252F114219547983%252F1%252Foriginal.jpg%3Frect%3D127%252C0%252C770%252C385%26s%3Dd1315cfac44c58142846df0e51c27a80?w=1000&s=10cad570065c5d1a60e849ad781b5808"
 event1.title = events_hash.keys[1]
 event1.description = events_hash.values[1]
-event1.start = Time.new(2015, 12, 17, 14, 0, 0)
+event1.start = Time.new(2015, 12, 19, 14, 0, 0)
 event1.price = Faker::Commerce.price
 event1.venue_title = Faker::Company.name
 event1.address_1 = Faker::Address.street_address
@@ -110,7 +110,7 @@ event2 = Event.new
 event2.remote_poster_url = "http://bestevents.us/wp-content/uploads/2015/10/1445770197_11215512_10153375988182655_8744649680193176618_n.jpg"
 event2.title = events_hash.keys[2]
 event2.description = events_hash.values[2]
-event2.start = Time.new(2015, 12, 17, 14, 0, 0)
+event2.start = Time.new(2015, 12, 19, 14, 0, 0)
 event2.price = Faker::Commerce.price
 event2.venue_title = Faker::Company.name
 event2.address_1 = Faker::Address.street_address
@@ -225,7 +225,7 @@ event10.save!
 
 puts "There are now #{Event.count} events..."
 
-30.times do |user_number|
+29.times do |user_number|
 
   # =========================================
   # Create 30 users
@@ -288,6 +288,42 @@ puts "There are now #{Event.count} events..."
   upcoming_ticket_1.event_id = event4.id
   upcoming_ticket_1.date_purchased = 2.days.ago
   upcoming_ticket_1.save!
+
+  upcoming_ticket_2 = Ticket.new
+  upcoming_ticket_2.user_id = user.id
+  upcoming_ticket_2.event_id = event5.id
+  upcoming_ticket_2.date_purchased = 2.days.ago
+  upcoming_ticket_2.save!
+
+  upcoming_ticket_3 = Ticket.new
+  upcoming_ticket_3.user_id = user.id
+  upcoming_ticket_3.event_id = event6.id
+  upcoming_ticket_3.date_purchased = 2.days.ago
+  upcoming_ticket_3.save!
+
+  upcoming_ticket_4 = Ticket.new
+  upcoming_ticket_4.user_id = user.id
+  upcoming_ticket_4.event_id = event7.id
+  upcoming_ticket_4.date_purchased = 2.days.ago
+  upcoming_ticket_4.save!
+
+  upcoming_ticket_5 = Ticket.new
+  upcoming_ticket_5.user_id = user.id
+  upcoming_ticket_5.event_id = event8.id
+  upcoming_ticket_5.date_purchased = 2.days.ago
+  upcoming_ticket_5.save!
+
+  upcoming_ticket_5 = Ticket.new
+  upcoming_ticket_5.user_id = user.id
+  upcoming_ticket_5.event_id = event9.id
+  upcoming_ticket_5.date_purchased = 2.days.ago
+  upcoming_ticket_5.save!
+
+  upcoming_ticket_5 = Ticket.new
+  upcoming_ticket_5.user_id = user.id
+  upcoming_ticket_5.event_id = event10.id
+  upcoming_ticket_5.date_purchased = 2.days.ago
+  upcoming_ticket_5.save!
 end
 
 puts "There are now #{User.count} users..."
@@ -323,37 +359,37 @@ credit_card_1.save!
 
 # =========================================
 # Give ella three tickets from past events
-past_ticket_0 = Ticket.new
-past_ticket_0.user_id = ella.id
-past_ticket_0.event_id = event0.id
-past_ticket_0.date_purchased = 1.month.ago
-past_ticket_0.save!
+# past_ticket_0 = Ticket.new
+# past_ticket_0.user_id = ella.id
+# past_ticket_0.event_id = event0.id
+# past_ticket_0.date_purchased = 1.month.ago
+# past_ticket_0.save!
 
-past_ticket_1 = Ticket.new
-past_ticket_1.user_id = ella.id
-past_ticket_1.event_id = event1.id
-past_ticket_1.date_purchased = 2.weeks.ago
-past_ticket_1.save!
+# past_ticket_1 = Ticket.new
+# past_ticket_1.user_id = ella.id
+# past_ticket_1.event_id = event1.id
+# past_ticket_1.date_purchased = 2.weeks.ago
+# past_ticket_1.save!
 
-past_ticket_2 = Ticket.new
-past_ticket_2.user_id = ella.id
-past_ticket_2.event_id = event2.id
-past_ticket_2.date_purchased = 3.weeks.ago
-past_ticket_2.save!
+# past_ticket_2 = Ticket.new
+# past_ticket_2.user_id = ella.id
+# past_ticket_2.event_id = event2.id
+# past_ticket_2.date_purchased = 3.weeks.ago
+# past_ticket_2.save!
 
 # =========================================
 # Give ella two tickets from future events
-upcoming_ticket_0 = Ticket.new
-upcoming_ticket_0.user_id = ella.id
-upcoming_ticket_0.event_id = event3.id
-upcoming_ticket_0.date_purchased = 1.week.ago
-upcoming_ticket_0.save!
+# upcoming_ticket_0 = Ticket.new
+# upcoming_ticket_0.user_id = ella.id
+# upcoming_ticket_0.event_id = event4.id
+# upcoming_ticket_0.date_purchased = 1.week.ago
+# upcoming_ticket_0.save!
 
-upcoming_ticket_1 = Ticket.new
-upcoming_ticket_1.user_id = ella.id
-upcoming_ticket_1.event_id = event4.id
-upcoming_ticket_1.date_purchased = 2.days.ago
-upcoming_ticket_1.save!
+# upcoming_ticket_1 = Ticket.new
+# upcoming_ticket_1.user_id = ella3.id
+# upcoming_ticket_1.event_id = event9.id
+# upcoming_ticket_1.date_purchased = 2.days.ago
+# upcoming_ticket_1.save!
 
 puts "#{ella.first_name} #{ella.last_name} | #{ella.email} Secret123 is ready for logging in."
 
